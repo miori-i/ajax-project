@@ -174,4 +174,74 @@ li {
     left: 16px;
     margin: 0;
   }
+
+  /* ----- mobile all recipes view ----- */
+  .recipe-wrapper {
+    width: 135px;
+    height: 135px;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.3);
+    margin: 14px;
+  }
+
+  .image-recipe-wrapper {
+    height: 90px;
+  }
+
+  .recipe-wrapper img {
+    width: 135px;
+    height: 90px;
+    object-fit: cover;
+  }
+
+  .text-recipe-wrapper .row {
+    height: calc(45px / 3);
+    margin: 0 16px;
+  }
+
+  .recipe-name {
+    font-family: "Abril Fatface", sans-serif;
+    font-size: 10px;
+    border-bottom: 1px solid #c5c0c0;
+    margin-top: 3px;
+    padding-bottom: 1px;
+  }
+
+  .recipe-time {
+    border-bottom: 1px solid #c5c0c0;
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 8px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 0;
+    padding-bottom: 1px;
+  }
+
+  i.fa-clock {
+    display: none;
+  }
+
+  .recipe-calories {
+    border-bottom: 1px solid #c5c0c0;
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 8px;
+    text-align: center;
+    margin-top: 5px;
+    padding-bottom: 1px;
+  }
+
+  .recipe-ingredients {
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 8px;
+    text-align: center;
+    margin-top: 2px;
+    padding-bottom: 4px;
+  }
+
+  .recipe-cousine {
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 8px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2px;
+  }
 }
