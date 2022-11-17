@@ -42,6 +42,10 @@
   margin: 0;
 }
 
+.text-all-recipes {
+  font-family: "Abhaya Libre", sans-serif;
+}
+
 /* ----- media query -----  */
 
 /* mobile screen */
