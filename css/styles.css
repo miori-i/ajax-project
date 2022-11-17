@@ -1,3 +1,5 @@
+/* --------- home view -------- */
+
 .home-img-wrapper {
   position: relative;
 }
@@ -42,8 +44,95 @@
   margin: 0;
 }
 
+/* ------- all recipes view ------- */
+
+li {
+  list-style: none;
+}
+
+.container-for-all-recipes {
+  margin: auto 20px;
+}
+
 .text-all-recipes {
   font-family: "Abhaya Libre", sans-serif;
+  font-size: 30px;
+  margin: 20px 50px;
+}
+
+.recipe-wrapper {
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.5);
+  margin: 0 20px 50px;
+}
+
+.image-recipe-wrapper {
+  height: 200px;
+}
+
+.recipe-wrapper img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.text-recipe-wrapper .row {
+  height: calc(100px / 3);
+  margin: 0 25px;
+}
+
+.recipe-name {
+  font-family: "Abril Fatface", sans-serif;
+  font-size: 20px;
+  border-bottom: 1px solid #c5c0c0;
+  margin-top: 8px;
+  padding-bottom: 2px;
+}
+
+.recipe-time {
+  border-bottom: 1px solid #c5c0c0;
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 11px;
+  margin-left: 8px;
+  padding-bottom: 4px;
+}
+
+.timer-icon-wrapper {
+  position: relative;
+}
+
+.fa-clock {
+  position: absolute;
+  left: 26px;
+  top: 19px;
+}
+
+.recipe-calories {
+  border-bottom: 1px solid #c5c0c0;
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 11px;
+  padding-bottom: 4px;
+}
+
+.recipe-ingredients {
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 6px;
+  padding-bottom: 4px;
+}
+
+.recipe-cousine {
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 6px;
 }
 
 /* ----- media query -----  */
