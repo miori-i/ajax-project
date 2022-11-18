@@ -1,6 +1,5 @@
 .row {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .column-full {
@@ -11,10 +10,27 @@
   flex-basis: 50%;
 }
 
-.recipes {
+.column-one-third {
+  flex-basis: calc(100% / 3);
+}
+
+.container-for-recipes {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.image-recipe-wrapper > .column-full {
-  height: 200px;
+.container-for-recipes::before {
+  content: "";
+  display: block;
+  width: 300px;
+  margin: 30px;
+  order: 1;
+}
+
+.container-for-recipes::after {
+  content: "";
+  display: block;
+  width: 300px;
+  margin: 30px;
 }
