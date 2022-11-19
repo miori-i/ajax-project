@@ -40,6 +40,7 @@ ul {
 .nav-recipes:hover,
 .nav-favorites:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 
 /* --------- home view -------- */
@@ -88,6 +89,7 @@ ul {
 
 .see-recipes-button:hover {
   opacity: 0.7;
+  cursor: pointer;
 }
 
 /* ------- all recipes view ------- */
