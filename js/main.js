@@ -69,6 +69,7 @@ xhrLunch.addEventListener('load', function () {
             allRecipes.push(xhrDinner.response.hits[i]);
           }
           // console.log('allRecipesver5:', allRecipes);
+
           // Use a loop to create a DOM tree for each recipe in the data model and append it to the page
           for (var k = 0; k < allRecipes.length; k++) {
             var $containerForRecipes = document.querySelector('.container-for-recipes');
@@ -99,8 +100,8 @@ function renderRecipe(object) {
   $columnFull1.setAttribute('class', 'column-full');
   $row1.appendChild($columnFull1);
 
-  var $image = document.createElement('div');
-  $image.setAttribute('src', object.recipe.image);
+  var $image = document.createElement('img');
+  $image.setAttribute('src', object.recipe.images.REGULAR.url);
   $image.setAttribute('alt', 'a picture of a recipe');
   $columnFull1.appendChild($image);
 
@@ -171,5 +172,4 @@ function renderRecipe(object) {
   $columnHalf4.appendChild($recipeCousine);
 
   return $recipeWrapper;
-
 }
