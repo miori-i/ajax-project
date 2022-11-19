@@ -173,3 +173,20 @@ function renderRecipe(object) {
 
   return $recipeWrapper;
 }
+
+var $views = document.querySelectorAll('.view');
+// Add a click target for "AJAX Project" on navber
+var $ajaxProject = document.querySelector('.nav-ajax-project');
+$ajaxProject.addEventListener('click', function () {
+  $views[0].className = 'view';
+  $views[1].className = 'view hidden';
+  // $views[2].className = 'view hidden'; -- for favorites view add this later
+});
+
+// Add a click target for "recipes" on navber
+var $recipes = document.querySelector('.nav-recipes');
+$recipes.addEventListener('click', function () {
+  $views[0].className = 'view hidden';
+  $views[1].className = 'view';
+  // $views[2].className = 'view hidden'; -- for favorites view add this later
+});
