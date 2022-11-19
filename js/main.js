@@ -6,13 +6,9 @@ xhrLunch.open('GET', 'https://api.edamam.com/api/recipes/v2?type=public&app_id=9
 xhrLunch.setRequestHeader('token', 'abc123');
 xhrLunch.responseType = 'json';
 xhrLunch.addEventListener('load', function () {
-  // console.log('xhrLunch.response:', xhrLunch.response);
-  // console.log('xhrLunch.response.hits:', xhrLunch.response.hits);
-
   for (var i = 0; i < xhrLunch.response.hits.length; i++) {
     allRecipes.push(xhrLunch.response.hits[i]);
   }
-  // console.log('allRecipesver1:', allRecipes);
 
   // get list of recipes that its mealType is Breakfast
   var xhrBreakfast = new XMLHttpRequest();
@@ -20,13 +16,9 @@ xhrLunch.addEventListener('load', function () {
   xhrBreakfast.setRequestHeader('token', 'abc123');
   xhrBreakfast.responseType = 'json';
   xhrBreakfast.addEventListener('load', function () {
-    // console.log('xhrxhrBreakfast.response:', xhrBreakfast.response);
-    // console.log('xhrxhrBreakfast.response.hits:', xhrBreakfast.response.hits);
-
     for (var i = 0; i < xhrBreakfast.response.hits.length; i++) {
       allRecipes.push(xhrBreakfast.response.hits[i]);
     }
-    // console.log('allRecipesver2:', allRecipes);
 
     // get list of recipes that its mealType is Snack
     var xhrSnack = new XMLHttpRequest();
@@ -34,13 +26,10 @@ xhrLunch.addEventListener('load', function () {
     xhrSnack.setRequestHeader('token', 'abc123');
     xhrSnack.responseType = 'json';
     xhrSnack.addEventListener('load', function () {
-      // console.log('xhrSnack.response:', xhrSnack.response);
-      // console.log('xhrSnack.response.hits:', xhrSnack.response.hits);
 
       for (var i = 0; i < xhrSnack.response.hits.length; i++) {
         allRecipes.push(xhrSnack.response.hits[i]);
       }
-      // console.log('allRecipesver3:', allRecipes);
 
       // get list of recipes that its mealType is Teatime
       var xhrTeatime = new XMLHttpRequest();
@@ -48,13 +37,10 @@ xhrLunch.addEventListener('load', function () {
       xhrTeatime.setRequestHeader('token', 'abc123');
       xhrTeatime.responseType = 'json';
       xhrTeatime.addEventListener('load', function () {
-        // console.log('xhrTeatime.response:', xhrTeatime.response);
-        // console.log('xhrTeatime.response.hits:', xhrTeatime.response.hits);
 
         for (var i = 0; i < xhrTeatime.response.hits.length; i++) {
           allRecipes.push(xhrTeatime.response.hits[i]);
         }
-        // console.log('allRecipesver4:', allRecipes);
 
         // get list of recipes that its mealType is Dinner
         var xhrDinner = new XMLHttpRequest();
@@ -62,13 +48,10 @@ xhrLunch.addEventListener('load', function () {
         xhrDinner.setRequestHeader('token', 'abc123');
         xhrDinner.responseType = 'json';
         xhrDinner.addEventListener('load', function () {
-          // console.log('xhrDinner.response:', xhrDinner.response);
-          // console.log('xhrDinner.response.hits:', xhrDinner.response.hits);
 
           for (var i = 0; i < xhrDinner.response.hits.length; i++) {
             allRecipes.push(xhrDinner.response.hits[i]);
           }
-          // console.log('allRecipesver5:', allRecipes);
 
           // Use a loop to create a DOM tree for each recipe in the data model and append it to the page
           for (var k = 0; k < allRecipes.length; k++) {
