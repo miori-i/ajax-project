@@ -18,10 +18,16 @@
 </head>
 <body>
   <header>
+    <nav class="navber">
+      <ul>
+        <li class="navber-listItem"><a href="#" data-view="home" class="nav-ajax-project">AJAX Project</a></li>
+        <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-recipes">Recipes</a></li>
+      </ul>
+    </nav>
   </header>
   <main>
     <!---------------- home ------------------>
-    <div data-view="home">
+    <div data-view="home" class="view">
       <div class="home-img-wrapper">
         <img src="images/pexels-antoni-shkraba-5589046.jpg" alt="a picture of home view" class="img-home">
         <div class="text-box-wrapper">
@@ -34,7 +40,7 @@
     </div>
 
     <!------------ all recipes ------------>
-    <div data-view="all-recipes">
+    <div data-view="all-recipes" class="view hidden">
       <p class="text-all-recipes">All Recipes</p>
 
       <!-- レシピたちの箱 -->

@@ -1,3 +1,25 @@
+/* --------- header -------- */
+.navber {
+  height: 70px;
+  border-bottom: solid 1px black;
+}
+
+.navber-listitem {
+  float: left;
+}
+
+.nav-ajax-project {
+  text-decoration: none;
+  color: black;
+  font-family: "Abril Fatface", sans-serif;
+}
+
+.nav-recipes {
+  text-decoration: none;
+  color: black;
+  font-family: "Abhaya Libre", sans-serif;
+}
+
 /* --------- home view -------- */
 
 .home-img-wrapper {
