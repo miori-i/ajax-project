@@ -191,22 +191,26 @@ $seeRecipesButton.addEventListener('click', function () {
 
 // View swapping function
 var $views = document.querySelectorAll('.view');
+var $navber = document.querySelector('.navber');
 function viewSwapping(dataView) {
   data.view = dataView;
   if (dataView === 'home') {
     $views[0].className = 'view';
     $views[1].className = 'view hidden';
     // $views[2].className = 'view hidden'; -- for favorites view add this later
+    $navber.style.borderBottom = 'none';
 
   } else if (dataView === 'all-recipes') {
     $views[0].className = 'view hidden';
     $views[1].className = 'view';
-  // $views[2].className = 'view hidden'; -- for favorites view add this later
+    // $views[2].className = 'view hidden'; -- for favorites view add this later
+    $navber.style.borderBottom = 'solid 0.5px black';
   }
   // else if (dataView === 'favorites') {
   //   $views[0].className = 'view hidden';
   //   $views[1].className = 'view hidden';
   //   $views[2].className = 'view'; -- for favorites view add this later
+  //   $navber.style.borderBottom = 'solid 0.5px black';
   // }
 }
 
