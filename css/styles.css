@@ -80,10 +80,15 @@ li {
 
 .recipe-name {
   font-family: "Abril Fatface", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   border-bottom: 1px solid #c5c0c0;
   margin-top: 8px;
   padding-bottom: 2px;
+  height: 30px;
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .recipe-time {
@@ -92,7 +97,6 @@ li {
   font-size: 15px;
   text-align: center;
   margin-top: 11px;
-  margin-left: 8px;
   padding-bottom: 4px;
 }
 
@@ -102,7 +106,7 @@ li {
 
 .fa-clock {
   position: absolute;
-  left: 26px;
+  left: 22px;
   top: 19px;
 }
 
@@ -115,7 +119,7 @@ li {
   padding-bottom: 4px;
 }
 
-.recipe-ingredients {
+.recipe-number-of-ingredients {
   font-family: "Abhaya Libre", sans-serif;
   font-size: 15px;
   text-align: center;
@@ -206,6 +210,11 @@ li {
     border-bottom: 1px solid #c5c0c0;
     margin-top: 3px;
     padding-bottom: 1px;
+    height: 15px;
+    width: 103px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .recipe-time {
@@ -231,7 +240,7 @@ li {
     padding-bottom: 1px;
   }
 
-  .recipe-ingredients {
+  .recipe-number-of-ingredients {
     font-family: "Abhaya Libre", sans-serif;
     font-size: 8px;
     text-align: center;
