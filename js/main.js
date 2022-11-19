@@ -189,10 +189,10 @@ function viewSwapping(dataView) {
     // $views[2].className = 'view hidden'; -- for favorites view add this later
     $navber.style.borderBottom = 'solid 0.5px black';
   }
-  // else if (dataView === 'favorites') {
+  // else if (dataView === 'favorites') { -- add this when favorites view is added
   //   $views[0].className = 'view hidden';
   //   $views[1].className = 'view hidden';
-  //   $views[2].className = 'view'; -- for favorites view add this later
+  //   $views[2].className = 'view';
   //   $navber.style.borderBottom = 'solid 0.5px black';
   // }
 }
