@@ -174,19 +174,43 @@ function renderRecipe(object) {
   return $recipeWrapper;
 }
 
-var $views = document.querySelectorAll('.view');
-// Add a click target for "AJAX Project" on navber
-var $ajaxProject = document.querySelector('.nav-ajax-project');
-$ajaxProject.addEventListener('click', function () {
-  $views[0].className = 'view';
-  $views[1].className = 'view hidden';
-  // $views[2].className = 'view hidden'; -- for favorites view add this later
+// Add a click event to A tages on navber
+document.addEventListener('click', function (event) {
+  if (event.target.tagName !== 'A') {
+    return null;
+  }
+  // Decides which page will be shown with the info by clicking
+  viewSwapping(event.target.name);
 });
 
-// Add a click target for "recipes" on navber
-var $recipes = document.querySelector('.nav-recipes');
-$recipes.addEventListener('click', function () {
-  $views[0].className = 'view hidden';
-  $views[1].className = 'view';
+// Add a click event to a button "see recipes→"
+var $seeRecipesButton = document.querySelector('.see-recipes-button');
+$seeRecipesButton.addEventListener('click', function () {
+  viewSwapping('all-recipes');
+});
+
+// View swapping function
+var $views = document.querySelectorAll('.view');
+function viewSwapping(dataView) {
+  data.view = dataView;
+  if (dataView === 'home') {
+    $views[0].className = 'view';
+    $views[1].className = 'view hidden';
+    // $views[2].className = 'view hidden'; -- for favorites view add this later
+
+  } else if (dataView === 'all-recipes') {
+    $views[0].className = 'view hidden';
+    $views[1].className = 'view';
   // $views[2].className = 'view hidden'; -- for favorites view add this later
+  }
+  // else if (dataView === 'favorites') {
+  //   $views[0].className = 'view hidden';
+  //   $views[1].className = 'view hidden';
+  //   $views[2].className = 'view'; -- for favorites view add this later
+  // }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // refreshing the pages shows the same view as before refreshing
+  viewSwapping(data.view);
 });
