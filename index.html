@@ -8,11 +8,48 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;800&family=Abril+Fatface&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <header>
+    <nav class="navber">
+      <ul>
+        <li class="navber-listitem"><a href="#" data-view="home" class="nav-ajax-project" name="home">AJAX Project</a></li>
+        <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-recipes" name="all-recipes">Recipes</a></li>
+        <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-favorites" name="favorites">Favorites</a></li>
+      </ul>
+    </nav>
   </header>
   <main>
+    <!---------------- home ------------------>
+    <div data-view="home" class="view hidden">
+      <div class="container-for-home">
+        <div class="home-img-wrapper">
+          <img src="images/pexels-antoni-shkraba-5589046.jpg" alt="a picture of home view" class="img-home">
+        </div>
+        <div class="text-box-wrapper">
+          <p class="text-sharing">Sharing my love for food</p>
+          <button type="button" class="see-recipes-button">See recipes →</button>
+        </div>
+      </div>
+    </div>
+
+    <!------------ all recipes ------------>
+    <div data-view="all-recipes" class="view">
+      <p class="text-all-recipes">All Recipes</p>
+
+      <!-- レシピたちの箱 -->
+      <div class="container-for-recipes">
+      </div>
+    </div>
+
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

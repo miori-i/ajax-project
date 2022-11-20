@@ -1,0 +1,301 @@
+/* --------- header -------- */
+.navber {
+  height: 86px;
+  border-bottom: solid 0.5px black;
+  margin: 0 25px;
+  display: flex;
+  justify-content: right;
+  align-items: end;
+  position: relative;
+}
+
+.navber-listitem {
+  float: left;
+}
+
+.nav-ajax-project {
+  text-decoration: none;
+  color: black;
+  font-family: "Abril Fatface", sans-serif;
+  font-size: 35px;
+  position: absolute;
+  left: 25px;
+  top: 18px;
+}
+
+ul {
+  margin-bottom: 21px;
+}
+
+.nav-recipes,
+.nav-favorites {
+  text-decoration: none;
+  color: black;
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 25px;
+  margin-right: 40px;
+}
+
+.nav-recipes:hover,
+.nav-favorites:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* --------- home view -------- */
+
+.container-for-home {
+  position: relative;
+}
+
+.img-home {
+  width: 100%;
+  height: 1600px;
+  object-fit: none;
+  object-position: 100% 19%;
+  zoom: 40%;
+}
+
+.text-box-wrapper {
+  position: absolute;
+  right: 163px;
+  bottom: 111px;
+  width: 466px;
+  height: 224px;
+  background-color: white;
+}
+
+.text-sharing {
+  color: #e29696;
+  font-family: "Abril Fatface", sans-serif;
+  font-size: 44px;
+  margin: 21px 47px 10px;
+  letter-spacing: 1px;
+}
+
+.see-recipes-button {
+  background-color: #fedede;
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 22px;
+  border: none;
+  width: 167px;
+  height: 40px;
+  position: absolute;
+  bottom: 30px;
+  left: 47px;
+}
+
+.see-recipes-button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/* ------- all recipes view ------- */
+
+li {
+  list-style: none;
+}
+
+.text-all-recipes {
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 36px;
+  margin: 33px 67px 0;
+}
+
+.recipe-wrapper {
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.5);
+  margin: 30px;
+}
+
+.recipe-image-wrapper {
+  height: 200px;
+}
+
+.recipe-wrapper img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-text-wrapper {
+  height: calc(100px / 3);
+  margin: 0 25px;
+}
+
+.recipe-name {
+  font-family: "Abril Fatface", sans-serif;
+  font-size: 18px;
+  border-bottom: 1px solid #c5c0c0;
+  margin-top: 8px;
+  height: 30px;
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recipe-time {
+  border-bottom: 1px solid #c5c0c0;
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 11px;
+  padding-bottom: 4px;
+}
+
+.timer-icon-wrapper {
+  position: relative;
+}
+
+.fa-clock {
+  position: absolute;
+  left: 22px;
+  top: 19px;
+}
+
+.recipe-calories {
+  border-bottom: 1px solid #c5c0c0;
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 11px;
+  padding-bottom: 4px;
+}
+
+.recipe-number-of-ingredients {
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 6px;
+}
+
+.recipe-cousine {
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* ----- media query -----  */
+
+/* mobile screen */
+@media screen and (max-width: 420px) {
+  /* --------- mobile header -------- */
+  .navber {
+    height: 53px;
+    margin: 0 20px;
+  }
+
+  .navber-listitem {
+    float: left;
+  }
+
+  ul {
+    margin-bottom: 12px;
+  }
+
+  .nav-ajax-project {
+    font-size: 23px;
+    left: 8px;
+    top: 11px;
+  }
+
+  .nav-recipes,
+  .nav-favorites {
+    font-size: 15px;
+    margin-right: 10px;
+  }
+
+  /* ------- mobile home view -------- */
+  .img-home {
+    height: 2200px;
+    object-fit: none;
+    object-position: 61%;
+    zoom: 17%;
+  }
+
+  .text-box-wrapper {
+    right: 20px;
+    bottom: 20px;
+    width: 231px;
+    height: 126px;
+  }
+
+  .text-sharing {
+    font-size: 22px;
+    margin: 15px 22px 10px;
+    letter-spacing: 0.6px;
+  }
+
+  .see-recipes-button {
+    font-size: 16px;
+    bottom: 19px;
+    left: 22px;
+    width: 130px;
+    height: 26px;
+  }
+
+  /* ----- mobile all recipes view ----- */
+
+  .text-all-recipes {
+    font-size: 23px;
+    margin: 15px 30px 0;
+  }
+
+  .recipe-wrapper {
+    width: 135px;
+    height: 135px;
+    box-shadow: 0 4px 15px 2px rgba(0, 0, 0, 0.3);
+    margin: 14px;
+  }
+
+  .recipe-image-wrapper {
+    height: 90px;
+  }
+
+  .recipe-wrapper img {
+    width: 135px;
+    height: 90px;
+  }
+
+  .recipe-text-wrapper {
+    height: calc(45px / 3);
+    margin: 0 12px;
+  }
+
+  .recipe-name {
+    font-size: 10px;
+    margin-top: 3px;
+    height: 15px;
+    width: 103px;
+  }
+
+  .recipe-time {
+    font-size: 8px;
+    margin-top: 5px;
+    padding-bottom: 1px;
+  }
+
+  i.fa-clock {
+    display: none;
+  }
+
+  .recipe-calories {
+    font-size: 8px;
+    margin-top: 5px;
+    padding-bottom: 1px;
+  }
+
+  .recipe-number-of-ingredients {
+    font-size: 8px;
+    margin-top: 2px;
+  }
+
+  .recipe-cousine {
+    font-size: 8px;
+    margin-top: 2px;
+  }
+}
