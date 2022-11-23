@@ -19,7 +19,7 @@
 <body>
   <header>
     <nav class="navber">
-      <ul>
+      <ul class="navber-list">
         <li class="navber-listitem"><a href="#" data-view="home" class="nav-ajax-project" name="home">AJAX Project</a></li>
         <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-recipes" name="all-recipes">Recipes</a></li>
         <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-favorites" name="favorites">Favorites</a></li>
@@ -50,7 +50,179 @@
     </div>
 
     <!------------ recipe details ------------>
-    <div data-view="recipe-details" class="view"></div>
+    <div data-view="recipe-details" class="view">
+      <div class="container-for-recipe-details">
+        <!-- row 1: 1st box -->
+        <div class="row recipe-details-box-1">
+          <div class="column-one-third">
+            <p class="recipe-details-time">Time</p>
+            <p class="recipe-details-min">60 min</p>
+          </div>
+          <div class="column-one-third">
+            <p class="recipe-details-calories">Calories</p>
+            <p class="recipe-details-cal">95 cal</p>
+          </div>
+          <div class="column-one-third">
+            <p class="recipe-details-cuisine">Cuisine Type</p>
+            <p class="recipe-details-type">American</p>
+          </div>
+        </div>
+        <!-- row 2: title -->
+        <div class="row">
+          <p class="recipe-details-title">Christmas Cookies</p>
+        </div>
+        <!-- row 3: image -->
+        <div class="row">
+          <img src="images/pexels-antoni-shkraba-5589046.jpg" alt="a pic of recipe" class="image-for-recipe-details">
+        </div>
+        <!-- row 4: 2nd box -->
+        <div class="row recipe-details-box-2-1">
+          <div class="column-one-third">
+            <p class="recipe-details-ingredients">Ingredients</p>
+            <ul class="ingredients-list">
+              <!-- make inside render  -->
+              <li>
+                <p>2 sticks (8 ounces) unsalted butter, at room temperature for 1 hour</p>
+              </li>
+              <li>
+                <p>2 ounces cream cheese, at room temperature</p>
+              </li>
+              <li>
+                <p>1 cup granulated sugar</p>
+              </li>
+              <li>
+                <p>1 large egg</p>
+              </li>
+            </ul>
+          </div>
+          <div class="column-two-third">
+            <p class="recipe-details-directions">Directions</p>
+            <ol class="directions-list">
+              <!-- make inside render  -->
+              <li>
+                <span>Place the butter, cream cheese, and sugar in the bowl of a stand mixer fitted with the blade attachment. (Alternatively,
+              use an electric hand mixer and large bowl.) Beat on medium speed for several minutes, or until light and fluffy. Beat in
+              the egg, vanilla and almond extracts, and lemon zest.</span>
+              </li>
+              <li>
+                <span>Place the flour, baking powder, and salt in a large bowl and whisk together. With the mixer on low speed, gradually add
+                to the butter and sugar mixture and beat until fully incorporated and a soft dough is formed.</span>
+              </li>
+              <li>
+                <span>At this point the dough can, and should be, chilled or frozen. If making cookies in the near future, divide the dough
+                into 2 balls and roll each out to 1/4 to 1/8-inch thickness between large pieces of parchment paper. Refrigerate for at
+                least 1 hour. Or freeze the dough balls, wrapped in plastic wrap and placed in a freezer bag, for up to 1 month. Thaw in
+                the refrigerator overnight, then proceed with the recipe.</span>
+              </li>
+              <li>
+                <span>To bake the cookies, heat the oven to 350°F and prepare baking sheets by lining them with parchment paper or Silpats.
+                Cut cookies out of the rolled dough and place on the prepared baking sheets.</span>
+              </li>
+              <li>
+                <span>Bake until set, 8 to 12 minutes depending on the thickness of the cookies. Let cool for 5 minutes on the cookie sheet,
+                then transfer to a wire rack to cool completely before icing or decorating.</span>
+              </li>
+
+            </ol>
+          </div>
+        </div>
+
+        <!-- row5 -->
+        <div class="row recipe-details-box-2-2">
+          <div class="column-full middle-border">
+            <p class="recipe-details-nutritions">Nutritions</p>
+          </div>
+        </div>
+        <div class="row row recipe-details-box-2-3">
+          <div class="column-one-forth left">
+            <p>Fat</p>
+            <p><span class="nutrition-margin">Saturated</span></p>
+            <p><span class="nutrition-margin">Trans</span></p>
+            <p><span class="nutrition-margin">Monounsaturated</span></p>
+            <p><span class="nutrition-margin">Polyunsaturated</span></p>
+            <p>Carbs</p>
+            <p><span class="nutrition-margin">Carbs (net)</span></p>
+            <p><span class="nutrition-margin">Fiber</span></p>
+            <p><span class="nutrition-margin">Sugars</span></p>
+            <p><span class="nutrition-margin">Sugars, added</span></p>
+            <p>Protein</p>
+            <p>Cholesterol</p>
+          </div>
+          <div class="column-one-twelve right first">
+            <p class="fat">20g</p>
+            <p class="saturated">12g</p>
+            <p class="trans">1g</p>
+            <p class="monounsaturated">20g</p>
+            <p class="polyunsaturated">12g</p>
+            <p class="carbs">1g</p>
+            <p class="carbsNet">20g</p>
+            <p class="fiber">12g</p>
+            <p class="sugars">1g</p>
+            <p class="sugarsAdded">20g</p>
+            <p class="protein">12g</p>
+            <p class="cholesterol">12g</p>
+          </div>
+          <div class="column-one-forth left">
+            <p>Sodium</p>
+            <p>Calcium</p>
+            <p>Magnesium</p>
+            <p>Potassium</p>
+            <p>Iron</p>
+            <p>Zinc</p>
+            <p>Phosphorus</p>
+            <p>Vitamin A</p>
+            <p>Vitamin C</p>
+            <p>Thiamin (B1)</p>
+            <p>Riboflavin (B2)</p>
+            <p>Niacin (B3)</p>
+          </div>
+          <div class="column-one-twelve right second">
+            <p class="sodium">20g</p>
+            <p class="calcium">12g</p>
+            <p class="magnesium">1g</p>
+            <p class="potassium">20g</p>
+            <p class="iron">12g</p>
+            <p class="zinc">1g</p>
+            <p class="phosphorus">20g</p>
+            <p class="vitaminA">12g</p>
+            <p class="vitaminC">1g</p>
+            <p class="thiamin">20g</p>
+            <p class="riboflavin">12g</p>
+            <p class="niacin">12g</p>
+          </div>
+          <div class="column-one-forth left">
+            <p>Vitamin B6</p>
+            <p>Folate equivalent (total)</p>
+            <p>Folate (food)</p>
+            <p>Folic acid</p>
+            <p>Vitamin B12</p>
+            <p>Vitamin D</p>
+            <p>Vitamin E</p>
+            <p>Vitamin K</p>
+            <p>Sugar alcohols</p>
+            <p>Water</p>
+          </div>
+          <div class="column-one-twelve right">
+            <p class="vitaminB6">20g</p>
+            <p class="folateEquivalent">12g</p>
+            <br>
+            <p class="folate">1g</p>
+            <p class="folicAcid">20g</p>
+            <p class="vitaminB12">12g</p>
+            <p class="vitaminD">1g</p>
+            <p class="vitaminE">20g</p>
+            <p class="vitaminK">12g</p>
+            <p class="sugarAlcohols">1g</p>
+            <p class="water">20g</p>
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+    </div>
 
 
   </main>

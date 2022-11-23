@@ -14,6 +14,18 @@
   flex-basis: calc(100% / 3);
 }
 
+.column-two-third {
+  flex-basis: calc(200% / 3);
+}
+
+.column-one-twelve {
+  flex-basis: calc(100% / 12);
+}
+
+.column-one-forth {
+  flex-basis: calc(100% / 4);
+}
+
 .container-for-recipes {
   display: flex;
   flex-wrap: wrap;
@@ -37,4 +49,8 @@
 
 .hidden {
   display: none;
+}
+
+.container-for-recipe-details {
+  margin: 0 60px;
 }
