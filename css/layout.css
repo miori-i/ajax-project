@@ -1,5 +1,6 @@
 .row {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .column-full {
@@ -16,14 +17,6 @@
 
 .column-two-third {
   flex-basis: calc(200% / 3);
-}
-
-.column-one-twelve {
-  flex-basis: calc(100% / 12);
-}
-
-.column-one-forth {
-  flex-basis: calc(100% / 4);
 }
 
 .container-for-recipes {
