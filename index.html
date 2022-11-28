@@ -19,7 +19,7 @@
 <body>
   <header>
     <nav class="navber">
-      <ul>
+      <ul class="navber-list">
         <li class="navber-listitem"><a href="#" data-view="home" class="nav-ajax-project" name="home">AJAX Project</a></li>
         <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-recipes" name="all-recipes">Recipes</a></li>
         <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-favorites" name="favorites">Favorites</a></li>
@@ -41,11 +41,267 @@
     </div>
 
     <!------------ all recipes ------------>
-    <div data-view="all-recipes" class="view">
+    <div data-view="all-recipes" class="view hidden">
       <p class="text-all-recipes">All Recipes</p>
 
       <!-- レシピたちの箱 -->
       <div class="container-for-recipes">
+      </div>
+    </div>
+
+    <!------------ recipe details ------------>
+    <div data-view="recipe-details" class="view">
+      <div class="container-for-recipe-details">
+        <!-- row 1: 1st box -->
+        <div class="row recipe-details-box-1">
+          <div class="column-one-third">
+            <p class="recipe-details-time">Time</p>
+            <p class="recipe-details-min">60 min</p>
+          </div>
+          <div class="column-one-third">
+            <p class="recipe-details-calories">Calories</p>
+            <p class="recipe-details-cal">95 cal</p>
+          </div>
+          <div class="column-one-third">
+            <p class="recipe-details-cuisine">Cuisine Type</p>
+            <p class="recipe-details-type">American</p>
+          </div>
+        </div>
+        <!-- row 2: title -->
+        <div class="row">
+          <p class="recipe-details-title">Christmas Cookies</p>
+        </div>
+        <!-- row 3: image -->
+        <div class="row">
+          <img src="images/pexels-antoni-shkraba-5589046.jpg" alt="a pic of recipe" class="image-for-recipe-details">
+        </div>
+        <!-- row 4: 2nd box -->
+        <div class="row recipe-details-box-2-1">
+          <div class="column-half mobile">
+            <p class="recipe-details-ingredients">Ingredients</p>
+            <ul class="ingredients-list">
+            </ul>
+          </div>
+          <div class="column-half mobile">
+            <p class="recipe-details-directions">Directions</p>
+            <p class="see-directions">See directions on <a href="#" class="original-url">Food Networks</a></p>
+          </div>
+        </div>
+
+        <!-- row5 -->
+        <div class="row recipe-details-box-2-2">
+          <div class="column-full middle-border">
+            <p class="recipe-details-nutritions">Nutritions</p>
+          </div>
+          <ul class="nutritions-list">
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Fat</span>
+                <span class="right fat">20g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left nutrition-margin">Saturated</span></span>
+                <span class="right saturated">100g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left nutrition-margin">Trans</span>
+                <span class="right trans">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left nutrition-margin">Monounsaturated</span>
+                <span class="right monounsaturated">20g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left nutrition-margin">Polyunsaturated</span>
+                <span class="right polyunsaturated">30g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Carbs</span>
+                <span class="right carbs">40g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left nutrition-margin">Carbs (net)</span>
+                <span class="right carbsNet">100g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left nutrition-margin">Fiber</span>
+                <span class="right fiber">2000g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left nutrition-margin">Sugars</span>
+                <span class="right sugars">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left nutrition-margin">Sugars, added</span>
+                <span class="right sugarsAdded">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Protein</span>
+                <span class="right protein">300g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Cholesterol</span>
+                <span class="right cholesterol">4000g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Sodium</span>
+                <span class="right sodium">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Calcium</span>
+                <span class="right calcium">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Magnesium</span>
+                <span class="right magnesium">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Potassium</span>
+                <span class="right potassium">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Iron</span>
+                <span class="right iron">100g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Zinc</span>
+                <span class="right zinc">50g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Phosphorus</span>
+                <span class="right phosphorus">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Vitamin A</span>
+                <span class="right vitaminA">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Vitamin C</span>
+                <span class="right vitaminC">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Thiamin (B1)</span>
+                <span class="right thiaminB1">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Riboflavin (B2)</span>
+                <span class="right riboflavinB2">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Niacin (B3)</span>
+                <span class="right niacinB3">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Vitamin B6</span>
+                <span class="right vitaminB6">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Folate equivalent (total)</span>
+                <span class="right folateEquivalentTotal">1000g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Folate (food)</span>
+                <span class="right folateFood">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Folic acid</span>
+                <span class="right folicAcid">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Vitamin B12</span>
+                <span class="right vitaminB12">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Vitamin D</span>
+                <span class="right vitaminD">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Vitamin E</span>
+                <span class="right vitaminE">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Vitamin K</span>
+                <span class="right vitaminK">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Sugar alcohols</span>
+                <span class="right sugarAlcohols">10g</span>
+              </div>
+            </li>
+            <li>
+              <div class="nutrition-frame">
+                <span class="left">Water</span>
+                <span class="right water">10g</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
       </div>
     </div>
 

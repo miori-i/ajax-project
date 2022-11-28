@@ -23,8 +23,9 @@
   top: 18px;
 }
 
-ul {
+.navber-list {
   margin-bottom: 21px;
+  list-style: none;
 }
 
 .nav-recipes,
@@ -92,10 +93,6 @@ ul {
 
 /* ------- all recipes view ------- */
 
-li {
-  list-style: none;
-}
-
 .text-all-recipes {
   font-family: "Abhaya Libre", sans-serif;
   font-size: 36px;
@@ -107,6 +104,7 @@ li {
   height: 300px;
   box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.5);
   margin: 30px;
+  list-style: none;
 }
 
 .recipe-image-wrapper {
@@ -179,6 +177,130 @@ li {
   margin-top: 6px;
 }
 
+/* ------------ recipe details view ----------- */
+
+.image-for-recipe-details {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+
+.recipe-details-box-1 {
+  border: 1px solid black;
+  text-align: center;
+  padding: 0 80px;
+}
+
+.recipe-details-time,
+.recipe-details-calories,
+.recipe-details-cuisine {
+  font-family: "Abril Fatface", sans-serif;
+  font-size: 25px;
+  border-bottom: 1px solid black;
+  margin: 6px 0;
+}
+
+.recipe-details-min,
+.recipe-details-cal,
+.recipe-details-type {
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 20px;
+  margin: 6px 0;
+}
+
+.recipe-details-title {
+  font-family: "Abril Fatface", sans-serif;
+  font-size: 60px;
+  margin: 10px auto;
+}
+
+.recipe-details-box-2-1 {
+  margin-top: 40px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding: 10px 30px;
+}
+
+.recipe-details-box-2-2 {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 0 30px;
+  margin-bottom: 40px;
+}
+
+.recipe-details-ingredients,
+.recipe-details-directions,
+.recipe-details-nutritions {
+  font-family: "Abril Fatface", sans-serif;
+  font-size: 24px;
+}
+
+.ingredients-list {
+  padding: 0 30px 0 20px;
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 18px;
+  list-style: none;
+}
+
+.see-directions {
+  padding-left: 20px;
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 20px;
+}
+
+.original-url {
+  text-decoration: none;
+  font-family: "Abhaya Libre", sans-serif;
+  color: black;
+  background-color: #f0eeee;
+  text-align: center;
+  margin-left: 5px;
+  padding: 2px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid gray;
+}
+
+.original-url:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.recipe-details-nutritions {
+  border-top: 2px solid black;
+  padding: 30px 20px 0;
+  margin: 0;
+}
+
+.nutrition-margin {
+  margin-left: 15px;
+}
+
+.nutritions-list {
+  list-style: none;
+  column-count: 3;
+  width: 100%;
+  padding: 0 30px 20px;
+}
+
+.left,
+.right {
+  display: inline-block;
+}
+
+.nutrition-frame {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nutritions-list li {
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 18px;
+  padding: 0 35px;
+}
+
 /* ----- media query -----  */
 
 /* mobile screen */
@@ -201,6 +323,10 @@ li {
     font-size: 23px;
     left: 8px;
     top: 11px;
+  }
+
+  .navber-list {
+    margin-bottom: 14px;
   }
 
   .nav-recipes,
@@ -297,5 +423,104 @@ li {
   .recipe-cousine {
     font-size: 8px;
     margin-top: 2px;
+  }
+
+  /* ------ mobile recipe details view ----- */
+  .container-for-recipe-details {
+    margin: 15px 30px;
+  }
+
+  .recipe-details-box-1 {
+    padding: 0 20px;
+  }
+
+  .recipe-details-time,
+  .recipe-details-calories,
+  .recipe-details-cuisine {
+    font-size: 13px;
+    margin: 5px 0;
+  }
+
+  .recipe-details-min,
+  .recipe-details-cal,
+  .recipe-details-type {
+    font-size: 12px;
+    margin: 5px 0;
+  }
+
+  .recipe-details-title {
+    font-size: 25px;
+  }
+
+  .image-for-recipe-details {
+    height: 170px;
+  }
+
+  .recipe-details-box-2-1 {
+    margin-top: 20px;
+    padding: 0 15px;
+  }
+
+  .recipe-details-box-2-2 {
+    padding: 0 15px;
+    margin-bottom: 40px;
+  }
+
+  .recipe-details-ingredients,
+  .recipe-details-directions,
+  .recipe-details-nutritions {
+    font-size: 15px;
+    margin: 10px 0 5px;
+  }
+
+  .column-half.mobile {
+    flex-basis: 100%;
+  }
+
+  .ingredients-list {
+    padding: 0 10px;
+    font-size: 10px;
+    list-style: none;
+  }
+
+  .ingredients-list p {
+    margin: 5px;
+  }
+
+  .see-directions {
+    padding-left: 20px;
+    font-size: 14px;
+  }
+
+  .original-url {
+    margin-left: 5px;
+    padding: 2px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: 1px solid gray;
+  }
+
+  .recipe-details-nutritions {
+    border-top: 1px solid black;
+    padding: 15px 10px 0;
+    margin-top: 15px;
+  }
+
+  .nutrition-margin {
+    margin-left: 10px;
+  }
+
+  .nutritions-list {
+    list-style: none;
+    column-count: 2;
+    width: 100%;
+    padding: 0 6px 10px;
+    margin-top: 5px;
+  }
+
+  .nutritions-list li {
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 10px;
+    padding: 0 12px;
   }
 }

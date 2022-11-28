@@ -1,7 +1,8 @@
 /* exported data */
 
 var data = {
-  view: 'entry-form'
+  view: 'entry-form',
+  details: null
 };
 
 // To write the data in entries property before unload, stginfy it

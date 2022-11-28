@@ -1,5 +1,6 @@
 .row {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .column-full {
@@ -12,6 +13,10 @@
 
 .column-one-third {
   flex-basis: calc(100% / 3);
+}
+
+.column-two-third {
+  flex-basis: calc(200% / 3);
 }
 
 .container-for-recipes {
@@ -37,4 +42,8 @@
 
 .hidden {
   display: none;
+}
+
+.container-for-recipe-details {
+  margin: 40px 60px;
 }
