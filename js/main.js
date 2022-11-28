@@ -61,14 +61,152 @@ xhrLunch.addEventListener('load', function () {
           }
 
           // Listen for clicks on the parent element of all rendered recipes in all recipes view
-
           $containerForRecipes.addEventListener('click', viewRecipeDetails);
 
           function viewRecipeDetails(event) {
             // console.log('cliked elemtnt:', event.target);
 
-            // for (var i = 0; i < allRecipes)
+            var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
+            // console.log('recipeLabel:', recipeLabel);
+            for (var i = 0; i < allRecipes.length; i++) {
+              if (allRecipes[i].recipe.label === recipeLabel) {
+                data.details = allRecipes[i];
+              }
+            }
+            // console.log('data.details:', data.details);
 
+            viewSwapping('recipe-details');
+            var $recipeDetailsMin = document.querySelector('.recipe-details-min');
+            $recipeDetailsMin.textContent = data.details.recipe.totalTime + ' min';
+
+            var $recipeDetailsCal = document.querySelector('.recipe-details-cal');
+            $recipeDetailsCal.textContent = Math.round(data.details.recipe.calories) + ' calories';
+
+            var $recipeDetailsType = document.querySelector('.recipe-details-type');
+            $recipeDetailsType.textContent = data.details.recipe.cuisineType;
+            $recipeDetailsType.textContent = $recipeDetailsType.textContent.charAt(0).toUpperCase() + $recipeDetailsType.textContent.slice(1);
+
+            var $recipeDetailsTitle = document.querySelector('.recipe-details-title');
+            $recipeDetailsTitle.textContent = data.details.recipe.label;
+
+            var $imageForRecipeDetails = document.querySelector('.image-for-recipe-details');
+            $imageForRecipeDetails.setAttribute('src', data.details.recipe.images.REGULAR.url);
+            $imageForRecipeDetails.setAttribute('alt', 'a pic of ' + data.details.recipe.label);
+
+            var $ingredientsList = document.querySelector('.ingredients-list');
+            for (var n = 0; n < data.details.recipe.ingredientLines.length; n++) {
+              var $ingredientsListItem = document.createElement('li');
+              var $ingredient = document.createElement('p');
+              $ingredient.textContent = data.details.recipe.ingredientLines[n];
+              $ingredientsListItem.appendChild($ingredient);
+              $ingredientsList.appendChild($ingredientsListItem);
+            }
+
+            var $originalUrl = document.querySelector('.original-url');
+            $originalUrl.setAttribute('href', data.details.recipe.url);
+            $originalUrl.textContent = data.details.recipe.source;
+
+            var $fat = document.querySelector('.fat');
+            $fat.textContent = Math.round(data.details.recipe.totalNutrients.FAT.quantity) + data.details.recipe.totalNutrients.FAT.unit;
+
+            var $saturated = document.querySelector('.saturated');
+            $saturated.textContent = Math.round(data.details.recipe.totalNutrients.FASAT.quantity) + data.details.recipe.totalNutrients.FASAT.unit;
+
+            var $trans = document.querySelector('.trans');
+            $trans.textContent = Math.round(data.details.recipe.totalNutrients.FATRN.quantity) + data.details.recipe.totalNutrients.FATRN.unit;
+
+            var $monounsaturated = document.querySelector('.monounsaturated');
+            $monounsaturated.textContent = Math.round(data.details.recipe.totalNutrients.FAMS.quantity) + data.details.recipe.totalNutrients.FAMS.unit;
+
+            var $polyunsaturated = document.querySelector('.polyunsaturated');
+            $polyunsaturated.textContent = Math.round(data.details.recipe.totalNutrients.FAPU.quantity) + data.details.recipe.totalNutrients.FAPU.unit;
+
+            var $carbs = document.querySelector('.carbs');
+            $carbs.textContent = Math.round(data.details.recipe.totalNutrients.CHOCDF.quantity) + data.details.recipe.totalNutrients.CHOCDF.unit;
+
+            var $carbsNet = document.querySelector('.carbsNet');
+            $carbsNet.textContent = Math.round(data.details.recipe.totalNutrients['CHOCDF.net'].quantity) + data.details.recipe.totalNutrients['CHOCDF.net'].unit;
+
+            var $fiber = document.querySelector('.fiber');
+            $fiber.textContent = Math.round(data.details.recipe.totalNutrients.FIBTG.quantity) + data.details.recipe.totalNutrients.FIBTG.unit;
+
+            var $sugars = document.querySelector('.sugars');
+            $sugars.textContent = Math.round(data.details.recipe.totalNutrients.SUGAR.quantity) + data.details.recipe.totalNutrients.SUGAR.unit;
+
+            var $sugarsAdded = document.querySelector('.sugarsAdded');
+            $sugarsAdded.textContent = Math.round(data.details.recipe.totalNutrients['SUGAR.added'].quantity) + data.details.recipe.totalNutrients['SUGAR.added'].unit;
+
+            var $protein = document.querySelector('.protein');
+            $protein.textContent = Math.round(data.details.recipe.totalNutrients.PROCNT.quantity) + data.details.recipe.totalNutrients.PROCNT.unit;
+
+            var $cholesterol = document.querySelector('.cholesterol');
+            $cholesterol.textContent = Math.round(data.details.recipe.totalNutrients.CHOLE.quantity) + data.details.recipe.totalNutrients.CHOLE.unit;
+
+            var $sodium = document.querySelector('.sodium');
+            $sodium.textContent = Math.round(data.details.recipe.totalNutrients.NA.quantity) + data.details.recipe.totalNutrients.NA.unit;
+
+            var $calcium = document.querySelector('.calcium');
+            $calcium.textContent = Math.round(data.details.recipe.totalNutrients.CA.quantity) + data.details.recipe.totalNutrients.CA.unit;
+
+            var $magnesium = document.querySelector('.magnesium');
+            $magnesium.textContent = Math.round(data.details.recipe.totalNutrients.MG.quantity) + data.details.recipe.totalNutrients.MG.unit;
+
+            var $potassium = document.querySelector('.potassium');
+            $potassium.textContent = Math.round(data.details.recipe.totalNutrients.K.quantity) + data.details.recipe.totalNutrients.K.unit;
+
+            var $iron = document.querySelector('.iron');
+            $iron.textContent = Math.round(data.details.recipe.totalNutrients.FE.quantity) + data.details.recipe.totalNutrients.FE.unit;
+
+            var $zinc = document.querySelector('.zinc');
+            $zinc.textContent = Math.round(data.details.recipe.totalNutrients.ZN.quantity) + data.details.recipe.totalNutrients.ZN.unit;
+
+            var $phosphorus = document.querySelector('.phosphorus');
+            $phosphorus.textContent = Math.round(data.details.recipe.totalNutrients.P.quantity) + data.details.recipe.totalNutrients.P.unit;
+
+            var $vitaminA = document.querySelector('.vitaminA');
+            $vitaminA.textContent = Math.round(data.details.recipe.totalNutrients.VITA_RAE.quantity) + data.details.recipe.totalNutrients.VITA_RAE.unit;
+
+            var $vitaminC = document.querySelector('.vitaminC');
+            $vitaminC.textContent = Math.round(data.details.recipe.totalNutrients.VITC.quantity) + data.details.recipe.totalNutrients.VITC.unit;
+
+            var $thiaminB1 = document.querySelector('.thiaminB1');
+            $thiaminB1.textContent = Math.round(data.details.recipe.totalNutrients.THIA.quantity) + data.details.recipe.totalNutrients.THIA.unit;
+
+            var $riboflavinB2 = document.querySelector('.riboflavinB2');
+            $riboflavinB2.textContent = Math.round(data.details.recipe.totalNutrients.RIBF.quantity) + data.details.recipe.totalNutrients.RIBF.unit;
+
+            var $niacinB3 = document.querySelector('.niacinB3');
+            $niacinB3.textContent = Math.round(data.details.recipe.totalNutrients.NIA.quantity) + data.details.recipe.totalNutrients.NIA.unit;
+
+            var $vitaminB6 = document.querySelector('.vitaminB6');
+            $vitaminB6.textContent = Math.round(data.details.recipe.totalNutrients.VITB6A.quantity) + data.details.recipe.totalNutrients.VITB6A.unit;
+
+            var $folateEquivalentTotal = document.querySelector('.folateEquivalentTotal');
+            $folateEquivalentTotal.textContent = Math.round(data.details.recipe.totalNutrients.FOLDFE.quantity) + data.details.recipe.totalNutrients.FOLDFE.unit;
+
+            var $folateFood = document.querySelector('.folateFood');
+            $folateFood.textContent = Math.round(data.details.recipe.totalNutrients.FOLFD.quantity) + data.details.recipe.totalNutrients.FOLFD.unit;
+
+            var $folicAcid = document.querySelector('.folateFood');
+            $folicAcid.textContent = Math.round(data.details.recipe.totalNutrients.FOLAC.quantity) + data.details.recipe.totalNutrients.FOLAC.unit;
+
+            var $vitaminB12 = document.querySelector('.vitaminB12');
+            $vitaminB12.textContent = Math.round(data.details.recipe.totalNutrients.VITB12.quantity) + data.details.recipe.totalNutrients.VITB12.unit;
+
+            var $vitaminD = document.querySelector('.vitaminD');
+            $vitaminD.textContent = Math.round(data.details.recipe.totalNutrients.VITD.quantity) + data.details.recipe.totalNutrients.VITD.unit;
+
+            var $vitaminE = document.querySelector('.vitaminE');
+            $vitaminE.textContent = Math.round(data.details.recipe.totalNutrients.TOCPHA.quantity) + data.details.recipe.totalNutrients.TOCPHA.unit;
+
+            var $vitaminK = document.querySelector('.vitaminK');
+            $vitaminK.textContent = Math.round(data.details.recipe.totalNutrients.VITK1.quantity) + data.details.recipe.totalNutrients.VITK1.unit;
+
+            var $sugarAlcohols = document.querySelector('.sugarAlcohols');
+            $sugarAlcohols.textContent = Math.round(data.details.recipe.totalNutrients['Sugar.alcohol'].quantity) + data.details.recipe.totalNutrients['Sugar.alcohol'].unit;
+
+            var $water = document.querySelector('.water');
+            $water.textContent = Math.round(data.details.recipe.totalNutrients.WATER.quantity) + data.details.recipe.totalNutrients.WATER.unit;
           }
 
         });
@@ -83,103 +221,85 @@ xhrLunch.addEventListener('load', function () {
 xhrLunch.send();
 
 function renderRecipe(object) {
-  var $recipeWrapper = document.createElement('div');
+  var $recipeWrapper = document.createElement('li');
   $recipeWrapper.setAttribute('class', 'recipe-wrapper');
-  $recipeWrapper.setAttribute('name', object.recipe.label);
+  $recipeWrapper.setAttribute('recipe-label', object.recipe.label);
 
   // row 1: image
   var $row1 = document.createElement('div');
   $row1.setAttribute('class', 'row recipe-image-wrapper');
-  $row1.setAttribute('name', object.recipe.label);
   $recipeWrapper.appendChild($row1);
 
   var $columnFull1 = document.createElement('div');
   $columnFull1.setAttribute('class', 'column-full');
-  $columnFull1.setAttribute('name', object.recipe.label);
   $row1.appendChild($columnFull1);
 
   var $image = document.createElement('img');
   $image.setAttribute('src', object.recipe.images.REGULAR.url);
   $image.setAttribute('alt', 'a pic of ' + object.recipe.label);
-  $image.setAttribute('name', object.recipe.label);
   $columnFull1.appendChild($image);
 
   // row 2: recipe name
   var $row2 = document.createElement('div');
   $row2.setAttribute('class', 'row recipe-text-wrapper');
-  $row2.setAttribute('name', object.recipe.label);
   $recipeWrapper.appendChild($row2);
 
   var $columnFull2 = document.createElement('div');
   $columnFull2.setAttribute('class', 'column-full');
-  $columnFull2.setAttribute('name', object.recipe.label);
   $row2.appendChild($columnFull2);
 
   var $recipeName = document.createElement('p');
   $recipeName.setAttribute('class', 'recipe-name');
-  $recipeName.setAttribute('name', object.recipe.label);
   $recipeName.textContent = object.recipe.label;
   $columnFull2.appendChild($recipeName);
-  // resize($recipeName, $columnFull2);
 
   // row 3: recipe tiem & calories
   var $row3 = document.createElement('div');
   $row3.setAttribute('class', 'row recipe-text-wrapper');
-  $row3.setAttribute('name', object.recipe.label);
   $recipeWrapper.appendChild($row3);
 
   var $columnHalf1 = document.createElement('div');
   $columnHalf1.setAttribute('class', 'column-half timer-icon-wrapper');
-  $columnHalf1.setAttribute('name', object.recipe.label);
   $row3.appendChild($columnHalf1);
 
   var $recipeTime = document.createElement('p');
   $recipeTime.setAttribute('class', 'recipe-time');
-  $recipeTime.setAttribute('name', object.recipe.label);
   $recipeTime.textContent = object.recipe.totalTime + ' min';
   $columnHalf1.appendChild($recipeTime);
 
   var $timerIcon = document.createElement('i');
   $timerIcon.setAttribute('class', 'fa-regular fa-clock fa-sm');
-  $timerIcon.setAttribute('name', object.recipe.label);
   $columnHalf1.appendChild($timerIcon);
 
   var $columnHalf2 = document.createElement('div');
   $columnHalf2.setAttribute('class', 'column-half');
-  $columnHalf2.setAttribute('name', object.recipe.label);
   $row3.appendChild($columnHalf2);
 
   var $recipeCalories = document.createElement('p');
   $recipeCalories.setAttribute('class', 'recipe-calories');
-  $recipeCalories.setAttribute('name', object.recipe.label);
   $recipeCalories.textContent = Math.round(object.recipe.calories) + ' calories';
   $columnHalf2.appendChild($recipeCalories);
 
   // row 4: number of recipe ingredients & type of cousine
   var $row4 = document.createElement('div');
   $row4.setAttribute('class', 'row recipe-text-wrapper');
-  $row4.setAttribute('name', object.recipe.label);
   $recipeWrapper.appendChild($row4);
 
   var $columnHalf3 = document.createElement('div');
   $columnHalf3.setAttribute('class', 'column-half');
-  $columnHalf3.setAttribute('name', object.recipe.label);
   $row4.appendChild($columnHalf3);
 
   var $recipeIngredients = document.createElement('p');
   $recipeIngredients.setAttribute('class', 'recipe-number-of-ingredients');
-  $recipeIngredients.setAttribute('name', object.recipe.label);
   $recipeIngredients.textContent = object.recipe.ingredients.length + ' ingredients';
   $columnHalf3.appendChild($recipeIngredients);
 
   var $columnHalf4 = document.createElement('div');
   $columnHalf4.setAttribute('class', 'column-half');
-  $columnHalf4.setAttribute('name', object.recipe.label);
   $row4.appendChild($columnHalf4);
 
   var $recipeCousine = document.createElement('p');
   $recipeCousine.setAttribute('class', 'recipe-cousine');
-  $recipeCousine.setAttribute('name', object.recipe.label);
   $recipeCousine.textContent = object.recipe.cuisineType;
   $recipeCousine.textContent = $recipeCousine.textContent.charAt(0).toUpperCase() + $recipeCousine.textContent.slice(1);
   $columnHalf4.appendChild($recipeCousine);
@@ -210,21 +330,21 @@ function viewSwapping(dataView) {
   if (dataView === 'home') {
     $views[0].className = 'view';
     $views[1].className = 'view hidden';
-    // $views[2].className = 'view hidden'; -- for favorites view add this later
+    $views[2].className = 'view hidden';
     $navber.style.borderBottom = 'none';
 
   } else if (dataView === 'all-recipes') {
     $views[0].className = 'view hidden';
     $views[1].className = 'view';
-    // $views[2].className = 'view hidden'; -- for favorites view add this later
+    $views[2].className = 'view hidden';
+    $navber.style.borderBottom = 'solid 0.5px black';
+
+  } else if (dataView === 'recipe-details') {
+    $views[0].className = 'view hidden';
+    $views[1].className = 'view hidden';
+    $views[2].className = 'view';
     $navber.style.borderBottom = 'solid 0.5px black';
   }
-  // else if (dataView === 'favorites') { -- add this when favorites view is added
-  //   $views[0].className = 'view hidden';
-  //   $views[1].className = 'view hidden';
-  //   $views[2].className = 'view';
-  //   $navber.style.borderBottom = 'solid 0.5px black';
-  // }
 }
 
 document.addEventListener('DOMContentLoaded', function () {

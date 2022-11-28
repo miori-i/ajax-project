@@ -104,6 +104,7 @@
   height: 300px;
   box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.5);
   margin: 30px;
+  list-style: none;
 }
 
 .recipe-image-wrapper {
@@ -237,46 +238,34 @@
 }
 
 .ingredients-list {
-  padding: 0 30px 0 0;
+  padding: 0 30px 0 20px;
   font-family: "Abhaya Libre", sans-serif;
   font-size: 18px;
   list-style: none;
 }
 
-.directions-list {
+.see-directions {
+  padding-left: 20px;
   font-family: "Abhaya Libre", sans-serif;
-  font-size: 18px;
-  padding-left: 26px;
-  padding-right: 15px;
+  font-size: 20px;
 }
 
-/* ol {
-  counter-reset: number;
-  list-style: none;
-  padding: 0;
-} */
-
-/* ol li::before {
-  font-family: "Abril Fatface", sans-serif;
-  font-size: 25px;
-  counter-increment: number;
-  content: counter(number) ".";
-  display: inline-block;
-} */
-
-ol li::marker {
-  font-family: "Abril Fatface", sans-serif;
-  font-size: 24px;
+.original-url {
+  text-decoration: none;
+  font-family: "Abhaya Libre", sans-serif;
+  color: black;
+  background-color: #f0eeee;
+  text-align: center;
+  margin-left: 5px;
+  padding: 2px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid gray;
 }
 
-ol li {
-  padding-left: 10px;
-  line-height: 0.8;
-  margin-top: 25px;
-}
-
-ol li span {
-  vertical-align: 0.5em;
+.original-url:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .recipe-details-nutritions {
@@ -484,8 +473,7 @@ ol li span {
     margin: 10px 0 5px;
   }
 
-  .column-one-third.mobile,
-  .column-two-third.mobile {
+  .column-half.mobile {
     flex-basis: 100%;
   }
 
@@ -499,20 +487,17 @@ ol li span {
     margin: 5px;
   }
 
-  .directions-list {
-    font-size: 10px;
+  .see-directions {
     padding-left: 20px;
-    padding-right: 10px;
-    margin: 0;
+    font-size: 14px;
   }
 
-  ol li::marker {
-    font-size: 15px;
-  }
-
-  ol li {
-    line-height: 0.8;
-    margin-top: 14px;
+  .original-url {
+    margin-left: 5px;
+    padding: 2px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: 1px solid gray;
   }
 
   .recipe-details-nutritions {
