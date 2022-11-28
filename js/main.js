@@ -76,137 +76,8 @@ xhrLunch.addEventListener('load', function () {
             // console.log('data.details:', data.details);
 
             viewSwapping('recipe-details');
-            var $recipeDetailsMin = document.querySelector('.recipe-details-min');
-            $recipeDetailsMin.textContent = data.details.recipe.totalTime + ' min';
+            enterValuesForRecipeDetails(data.details);
 
-            var $recipeDetailsCal = document.querySelector('.recipe-details-cal');
-            $recipeDetailsCal.textContent = Math.round(data.details.recipe.calories) + ' calories';
-
-            var $recipeDetailsType = document.querySelector('.recipe-details-type');
-            $recipeDetailsType.textContent = data.details.recipe.cuisineType;
-            $recipeDetailsType.textContent = $recipeDetailsType.textContent.charAt(0).toUpperCase() + $recipeDetailsType.textContent.slice(1);
-
-            var $recipeDetailsTitle = document.querySelector('.recipe-details-title');
-            $recipeDetailsTitle.textContent = data.details.recipe.label;
-
-            var $imageForRecipeDetails = document.querySelector('.image-for-recipe-details');
-            $imageForRecipeDetails.setAttribute('src', data.details.recipe.images.REGULAR.url);
-            $imageForRecipeDetails.setAttribute('alt', 'a pic of ' + data.details.recipe.label);
-
-            var $ingredientsList = document.querySelector('.ingredients-list');
-            for (var n = 0; n < data.details.recipe.ingredientLines.length; n++) {
-              var $ingredientsListItem = document.createElement('li');
-              var $ingredient = document.createElement('p');
-              $ingredient.textContent = data.details.recipe.ingredientLines[n];
-              $ingredientsListItem.appendChild($ingredient);
-              $ingredientsList.appendChild($ingredientsListItem);
-            }
-
-            var $originalUrl = document.querySelector('.original-url');
-            $originalUrl.setAttribute('href', data.details.recipe.url);
-            $originalUrl.textContent = data.details.recipe.source;
-
-            var $fat = document.querySelector('.fat');
-            $fat.textContent = Math.round(data.details.recipe.totalNutrients.FAT.quantity) + data.details.recipe.totalNutrients.FAT.unit;
-
-            var $saturated = document.querySelector('.saturated');
-            $saturated.textContent = Math.round(data.details.recipe.totalNutrients.FASAT.quantity) + data.details.recipe.totalNutrients.FASAT.unit;
-
-            var $trans = document.querySelector('.trans');
-            $trans.textContent = Math.round(data.details.recipe.totalNutrients.FATRN.quantity) + data.details.recipe.totalNutrients.FATRN.unit;
-
-            var $monounsaturated = document.querySelector('.monounsaturated');
-            $monounsaturated.textContent = Math.round(data.details.recipe.totalNutrients.FAMS.quantity) + data.details.recipe.totalNutrients.FAMS.unit;
-
-            var $polyunsaturated = document.querySelector('.polyunsaturated');
-            $polyunsaturated.textContent = Math.round(data.details.recipe.totalNutrients.FAPU.quantity) + data.details.recipe.totalNutrients.FAPU.unit;
-
-            var $carbs = document.querySelector('.carbs');
-            $carbs.textContent = Math.round(data.details.recipe.totalNutrients.CHOCDF.quantity) + data.details.recipe.totalNutrients.CHOCDF.unit;
-
-            var $carbsNet = document.querySelector('.carbsNet');
-            $carbsNet.textContent = Math.round(data.details.recipe.totalNutrients['CHOCDF.net'].quantity) + data.details.recipe.totalNutrients['CHOCDF.net'].unit;
-
-            var $fiber = document.querySelector('.fiber');
-            $fiber.textContent = Math.round(data.details.recipe.totalNutrients.FIBTG.quantity) + data.details.recipe.totalNutrients.FIBTG.unit;
-
-            var $sugars = document.querySelector('.sugars');
-            $sugars.textContent = Math.round(data.details.recipe.totalNutrients.SUGAR.quantity) + data.details.recipe.totalNutrients.SUGAR.unit;
-
-            var $sugarsAdded = document.querySelector('.sugarsAdded');
-            $sugarsAdded.textContent = Math.round(data.details.recipe.totalNutrients['SUGAR.added'].quantity) + data.details.recipe.totalNutrients['SUGAR.added'].unit;
-
-            var $protein = document.querySelector('.protein');
-            $protein.textContent = Math.round(data.details.recipe.totalNutrients.PROCNT.quantity) + data.details.recipe.totalNutrients.PROCNT.unit;
-
-            var $cholesterol = document.querySelector('.cholesterol');
-            $cholesterol.textContent = Math.round(data.details.recipe.totalNutrients.CHOLE.quantity) + data.details.recipe.totalNutrients.CHOLE.unit;
-
-            var $sodium = document.querySelector('.sodium');
-            $sodium.textContent = Math.round(data.details.recipe.totalNutrients.NA.quantity) + data.details.recipe.totalNutrients.NA.unit;
-
-            var $calcium = document.querySelector('.calcium');
-            $calcium.textContent = Math.round(data.details.recipe.totalNutrients.CA.quantity) + data.details.recipe.totalNutrients.CA.unit;
-
-            var $magnesium = document.querySelector('.magnesium');
-            $magnesium.textContent = Math.round(data.details.recipe.totalNutrients.MG.quantity) + data.details.recipe.totalNutrients.MG.unit;
-
-            var $potassium = document.querySelector('.potassium');
-            $potassium.textContent = Math.round(data.details.recipe.totalNutrients.K.quantity) + data.details.recipe.totalNutrients.K.unit;
-
-            var $iron = document.querySelector('.iron');
-            $iron.textContent = Math.round(data.details.recipe.totalNutrients.FE.quantity) + data.details.recipe.totalNutrients.FE.unit;
-
-            var $zinc = document.querySelector('.zinc');
-            $zinc.textContent = Math.round(data.details.recipe.totalNutrients.ZN.quantity) + data.details.recipe.totalNutrients.ZN.unit;
-
-            var $phosphorus = document.querySelector('.phosphorus');
-            $phosphorus.textContent = Math.round(data.details.recipe.totalNutrients.P.quantity) + data.details.recipe.totalNutrients.P.unit;
-
-            var $vitaminA = document.querySelector('.vitaminA');
-            $vitaminA.textContent = Math.round(data.details.recipe.totalNutrients.VITA_RAE.quantity) + data.details.recipe.totalNutrients.VITA_RAE.unit;
-
-            var $vitaminC = document.querySelector('.vitaminC');
-            $vitaminC.textContent = Math.round(data.details.recipe.totalNutrients.VITC.quantity) + data.details.recipe.totalNutrients.VITC.unit;
-
-            var $thiaminB1 = document.querySelector('.thiaminB1');
-            $thiaminB1.textContent = Math.round(data.details.recipe.totalNutrients.THIA.quantity) + data.details.recipe.totalNutrients.THIA.unit;
-
-            var $riboflavinB2 = document.querySelector('.riboflavinB2');
-            $riboflavinB2.textContent = Math.round(data.details.recipe.totalNutrients.RIBF.quantity) + data.details.recipe.totalNutrients.RIBF.unit;
-
-            var $niacinB3 = document.querySelector('.niacinB3');
-            $niacinB3.textContent = Math.round(data.details.recipe.totalNutrients.NIA.quantity) + data.details.recipe.totalNutrients.NIA.unit;
-
-            var $vitaminB6 = document.querySelector('.vitaminB6');
-            $vitaminB6.textContent = Math.round(data.details.recipe.totalNutrients.VITB6A.quantity) + data.details.recipe.totalNutrients.VITB6A.unit;
-
-            var $folateEquivalentTotal = document.querySelector('.folateEquivalentTotal');
-            $folateEquivalentTotal.textContent = Math.round(data.details.recipe.totalNutrients.FOLDFE.quantity) + data.details.recipe.totalNutrients.FOLDFE.unit;
-
-            var $folateFood = document.querySelector('.folateFood');
-            $folateFood.textContent = Math.round(data.details.recipe.totalNutrients.FOLFD.quantity) + data.details.recipe.totalNutrients.FOLFD.unit;
-
-            var $folicAcid = document.querySelector('.folateFood');
-            $folicAcid.textContent = Math.round(data.details.recipe.totalNutrients.FOLAC.quantity) + data.details.recipe.totalNutrients.FOLAC.unit;
-
-            var $vitaminB12 = document.querySelector('.vitaminB12');
-            $vitaminB12.textContent = Math.round(data.details.recipe.totalNutrients.VITB12.quantity) + data.details.recipe.totalNutrients.VITB12.unit;
-
-            var $vitaminD = document.querySelector('.vitaminD');
-            $vitaminD.textContent = Math.round(data.details.recipe.totalNutrients.VITD.quantity) + data.details.recipe.totalNutrients.VITD.unit;
-
-            var $vitaminE = document.querySelector('.vitaminE');
-            $vitaminE.textContent = Math.round(data.details.recipe.totalNutrients.TOCPHA.quantity) + data.details.recipe.totalNutrients.TOCPHA.unit;
-
-            var $vitaminK = document.querySelector('.vitaminK');
-            $vitaminK.textContent = Math.round(data.details.recipe.totalNutrients.VITK1.quantity) + data.details.recipe.totalNutrients.VITK1.unit;
-
-            var $sugarAlcohols = document.querySelector('.sugarAlcohols');
-            $sugarAlcohols.textContent = Math.round(data.details.recipe.totalNutrients['Sugar.alcohol'].quantity) + data.details.recipe.totalNutrients['Sugar.alcohol'].unit;
-
-            var $water = document.querySelector('.water');
-            $water.textContent = Math.round(data.details.recipe.totalNutrients.WATER.quantity) + data.details.recipe.totalNutrients.WATER.unit;
           }
 
         });
@@ -350,4 +221,139 @@ function viewSwapping(dataView) {
 document.addEventListener('DOMContentLoaded', function () {
   // refreshing the pages shows the same view as before refreshing
   viewSwapping(data.view);
+  enterValuesForRecipeDetails(data.details);
 });
+
+function enterValuesForRecipeDetails(object) {
+  var $recipeDetailsMin = document.querySelector('.recipe-details-min');
+  $recipeDetailsMin.textContent = object.recipe.totalTime + ' min';
+
+  var $recipeDetailsCal = document.querySelector('.recipe-details-cal');
+  $recipeDetailsCal.textContent = Math.round(object.recipe.calories) + ' calories';
+
+  var $recipeDetailsType = document.querySelector('.recipe-details-type');
+  $recipeDetailsType.textContent = object.recipe.cuisineType;
+  $recipeDetailsType.textContent = $recipeDetailsType.textContent.charAt(0).toUpperCase() + $recipeDetailsType.textContent.slice(1);
+
+  var $recipeDetailsTitle = document.querySelector('.recipe-details-title');
+  $recipeDetailsTitle.textContent = object.recipe.label;
+
+  var $imageForRecipeDetails = document.querySelector('.image-for-recipe-details');
+  $imageForRecipeDetails.setAttribute('src', object.recipe.images.REGULAR.url);
+  $imageForRecipeDetails.setAttribute('alt', 'a pic of ' + object.recipe.label);
+
+  var $ingredientsList = document.querySelector('.ingredients-list');
+  for (var n = 0; n < object.recipe.ingredientLines.length; n++) {
+    var $ingredientsListItem = document.createElement('li');
+    var $ingredient = document.createElement('p');
+    $ingredient.textContent = object.recipe.ingredientLines[n];
+    $ingredientsListItem.appendChild($ingredient);
+    $ingredientsList.appendChild($ingredientsListItem);
+  }
+
+  var $originalUrl = document.querySelector('.original-url');
+  $originalUrl.setAttribute('href', object.recipe.url);
+  $originalUrl.textContent = object.recipe.source;
+
+  var $fat = document.querySelector('.fat');
+  $fat.textContent = Math.round(object.recipe.totalNutrients.FAT.quantity) + object.recipe.totalNutrients.FAT.unit;
+
+  var $saturated = document.querySelector('.saturated');
+  $saturated.textContent = Math.round(object.recipe.totalNutrients.FASAT.quantity) + object.recipe.totalNutrients.FASAT.unit;
+
+  var $trans = document.querySelector('.trans');
+  $trans.textContent = Math.round(object.recipe.totalNutrients.FATRN.quantity) + object.recipe.totalNutrients.FATRN.unit;
+
+  var $monounsaturated = document.querySelector('.monounsaturated');
+  $monounsaturated.textContent = Math.round(object.recipe.totalNutrients.FAMS.quantity) + object.recipe.totalNutrients.FAMS.unit;
+
+  var $polyunsaturated = document.querySelector('.polyunsaturated');
+  $polyunsaturated.textContent = Math.round(object.recipe.totalNutrients.FAPU.quantity) + object.recipe.totalNutrients.FAPU.unit;
+
+  var $carbs = document.querySelector('.carbs');
+  $carbs.textContent = Math.round(object.recipe.totalNutrients.CHOCDF.quantity) + object.recipe.totalNutrients.CHOCDF.unit;
+
+  var $carbsNet = document.querySelector('.carbsNet');
+  $carbsNet.textContent = Math.round(object.recipe.totalNutrients['CHOCDF.net'].quantity) + object.recipe.totalNutrients['CHOCDF.net'].unit;
+
+  var $fiber = document.querySelector('.fiber');
+  $fiber.textContent = Math.round(object.recipe.totalNutrients.FIBTG.quantity) + object.recipe.totalNutrients.FIBTG.unit;
+
+  var $sugars = document.querySelector('.sugars');
+  $sugars.textContent = Math.round(object.recipe.totalNutrients.SUGAR.quantity) + object.recipe.totalNutrients.SUGAR.unit;
+
+  var $sugarsAdded = document.querySelector('.sugarsAdded');
+  $sugarsAdded.textContent = Math.round(object.recipe.totalNutrients['SUGAR.added'].quantity) + object.recipe.totalNutrients['SUGAR.added'].unit;
+
+  var $protein = document.querySelector('.protein');
+  $protein.textContent = Math.round(object.recipe.totalNutrients.PROCNT.quantity) + object.recipe.totalNutrients.PROCNT.unit;
+
+  var $cholesterol = document.querySelector('.cholesterol');
+  $cholesterol.textContent = Math.round(object.recipe.totalNutrients.CHOLE.quantity) + object.recipe.totalNutrients.CHOLE.unit;
+
+  var $sodium = document.querySelector('.sodium');
+  $sodium.textContent = Math.round(object.recipe.totalNutrients.NA.quantity) + object.recipe.totalNutrients.NA.unit;
+
+  var $calcium = document.querySelector('.calcium');
+  $calcium.textContent = Math.round(object.recipe.totalNutrients.CA.quantity) + object.recipe.totalNutrients.CA.unit;
+
+  var $magnesium = document.querySelector('.magnesium');
+  $magnesium.textContent = Math.round(object.recipe.totalNutrients.MG.quantity) + object.recipe.totalNutrients.MG.unit;
+
+  var $potassium = document.querySelector('.potassium');
+  $potassium.textContent = Math.round(object.recipe.totalNutrients.K.quantity) + object.recipe.totalNutrients.K.unit;
+
+  var $iron = document.querySelector('.iron');
+  $iron.textContent = Math.round(object.recipe.totalNutrients.FE.quantity) + object.recipe.totalNutrients.FE.unit;
+
+  var $zinc = document.querySelector('.zinc');
+  $zinc.textContent = Math.round(object.recipe.totalNutrients.ZN.quantity) + object.recipe.totalNutrients.ZN.unit;
+
+  var $phosphorus = document.querySelector('.phosphorus');
+  $phosphorus.textContent = Math.round(object.recipe.totalNutrients.P.quantity) + object.recipe.totalNutrients.P.unit;
+
+  var $vitaminA = document.querySelector('.vitaminA');
+  $vitaminA.textContent = Math.round(object.recipe.totalNutrients.VITA_RAE.quantity) + object.recipe.totalNutrients.VITA_RAE.unit;
+
+  var $vitaminC = document.querySelector('.vitaminC');
+  $vitaminC.textContent = Math.round(object.recipe.totalNutrients.VITC.quantity) + object.recipe.totalNutrients.VITC.unit;
+
+  var $thiaminB1 = document.querySelector('.thiaminB1');
+  $thiaminB1.textContent = Math.round(object.recipe.totalNutrients.THIA.quantity) + object.recipe.totalNutrients.THIA.unit;
+
+  var $riboflavinB2 = document.querySelector('.riboflavinB2');
+  $riboflavinB2.textContent = Math.round(object.recipe.totalNutrients.RIBF.quantity) + object.recipe.totalNutrients.RIBF.unit;
+
+  var $niacinB3 = document.querySelector('.niacinB3');
+  $niacinB3.textContent = Math.round(object.recipe.totalNutrients.NIA.quantity) + object.recipe.totalNutrients.NIA.unit;
+
+  var $vitaminB6 = document.querySelector('.vitaminB6');
+  $vitaminB6.textContent = Math.round(object.recipe.totalNutrients.VITB6A.quantity) + object.recipe.totalNutrients.VITB6A.unit;
+
+  var $folateEquivalentTotal = document.querySelector('.folateEquivalentTotal');
+  $folateEquivalentTotal.textContent = Math.round(object.recipe.totalNutrients.FOLDFE.quantity) + object.recipe.totalNutrients.FOLDFE.unit;
+
+  var $folateFood = document.querySelector('.folateFood');
+  $folateFood.textContent = Math.round(object.recipe.totalNutrients.FOLFD.quantity) + object.recipe.totalNutrients.FOLFD.unit;
+
+  var $folicAcid = document.querySelector('.folateFood');
+  $folicAcid.textContent = Math.round(object.recipe.totalNutrients.FOLAC.quantity) + object.recipe.totalNutrients.FOLAC.unit;
+
+  var $vitaminB12 = document.querySelector('.vitaminB12');
+  $vitaminB12.textContent = Math.round(object.recipe.totalNutrients.VITB12.quantity) + object.recipe.totalNutrients.VITB12.unit;
+
+  var $vitaminD = document.querySelector('.vitaminD');
+  $vitaminD.textContent = Math.round(object.recipe.totalNutrients.VITD.quantity) + object.recipe.totalNutrients.VITD.unit;
+
+  var $vitaminE = document.querySelector('.vitaminE');
+  $vitaminE.textContent = Math.round(object.recipe.totalNutrients.TOCPHA.quantity) + object.recipe.totalNutrients.TOCPHA.unit;
+
+  var $vitaminK = document.querySelector('.vitaminK');
+  $vitaminK.textContent = Math.round(object.recipe.totalNutrients.VITK1.quantity) + object.recipe.totalNutrients.VITK1.unit;
+
+  var $sugarAlcohols = document.querySelector('.sugarAlcohols');
+  $sugarAlcohols.textContent = Math.round(object.recipe.totalNutrients['Sugar.alcohol'].quantity) + object.recipe.totalNutrients['Sugar.alcohol'].unit;
+
+  var $water = document.querySelector('.water');
+  $water.textContent = Math.round(object.recipe.totalNutrients.WATER.quantity) + object.recipe.totalNutrients.WATER.unit;
+}
