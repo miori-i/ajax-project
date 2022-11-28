@@ -203,12 +203,15 @@ function viewSwapping(dataView) {
     $views[1].className = 'view hidden';
     $views[2].className = 'view hidden';
     $navber.style.borderBottom = 'none';
+    // Clear the values up when user leave all recipes view.
+    data.details = null;
 
   } else if (dataView === 'all-recipes') {
     $views[0].className = 'view hidden';
     $views[1].className = 'view';
     $views[2].className = 'view hidden';
     $navber.style.borderBottom = 'solid 0.5px black';
+    data.details = null;
 
   } else if (dataView === 'recipe-details') {
     $views[0].className = 'view hidden';
