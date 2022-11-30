@@ -236,6 +236,11 @@ function viewSwapping(dataView) {
     $navber.style.borderBottom = 'solid 0.5px black';
     data.details = null;
     $starIcon.className = 'fa-regular fa-star';
+    // Hide "No recipes have been added in favorites." if favorites array is not empty
+    if (data.favorites.length > 0) {
+      var $noRecipeInFavorites = document.querySelector('.no-recipes-in-favirites');
+      $noRecipeInFavorites.className = 'no-recipes-in-favirites hidden';
+    }
   }
 }
 
@@ -389,15 +394,20 @@ var $starIcon = document.querySelector('.fa-regular.fa-star');
 $starIcon.addEventListener('click', function () {
   $starIcon.className = 'fa-solid fa-star';
   // Add the current recipe to the favorites list if it haven't saved yet
+  var alreadyInFavoritesList = null;
   for (var i = 0; i < data.favorites.length; i++) {
-    if (data.details.recipe.label !== data.favorites[i].recipe.label) {
-      data.favorites.push(data.details);
-      var $containerForFavorites = document.querySelector('.container-for-favorites');
-      $containerForFavorites.appendChild(renderRecipe(data.details));
+    if (data.details.recipe.label === data.favorites[i].recipe.label) {
+      alreadyInFavoritesList = 'yes';
       break;
+    } else {
+      alreadyInFavoritesList = 'no';
     }
   }
-
+  if (alreadyInFavoritesList === 'no' || alreadyInFavoritesList === null) {
+    data.favorites.push(data.details);
+    var $containerForFavorites = document.querySelector('.container-for-favorites');
+    $containerForFavorites.appendChild(renderRecipe(data.details));
+  }
 });
 
 // Use a loop to create a DOM tree for each recipe of favorites list and append it to the page
