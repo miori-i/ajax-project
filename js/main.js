@@ -202,6 +202,8 @@ function viewSwapping(dataView) {
     $navber.style.borderBottom = 'none';
     // Clear the values up when user leave all recipes view.
     data.details = null;
+    // Reset the star icon
+    $starIcon.className = 'fa-regular fa-star';
 
   } else if (dataView === 'all-recipes') {
     $views[0].className = 'view hidden';
@@ -209,12 +211,19 @@ function viewSwapping(dataView) {
     $views[2].className = 'view hidden';
     $navber.style.borderBottom = 'solid 0.5px black';
     data.details = null;
+    $starIcon.className = 'fa-regular fa-star';
 
   } else if (dataView === 'recipe-details') {
     $views[0].className = 'view hidden';
     $views[1].className = 'view hidden';
     $views[2].className = 'view';
     $navber.style.borderBottom = 'solid 0.5px black';
+    // Keep star icon yellow if the recipe was saved in favorites list
+    for (var i = 0; i < data.favorites.length; i++) {
+      if (data.details.recipe.label === data.favorites[i].recipe.label) {
+        $starIcon.className = 'fa-solid fa-star';
+      }
+    }
   }
 }
 
@@ -361,3 +370,11 @@ function enterValuesForRecipeDetails(object) {
   var $water = document.querySelector('.water');
   $water.textContent = Math.round(object.recipe.totalNutrients.WATER.quantity) + object.recipe.totalNutrients.WATER.unit;
 }
+
+// Listen for clicks on the star icon to save the recipe to favorites list
+var $starIcon = document.querySelector('.fa-regular.fa-star');
+
+$starIcon.addEventListener('click', function () {
+  $starIcon.className = 'fa-solid fa-star';
+  data.favorites.push(data.details);
+});

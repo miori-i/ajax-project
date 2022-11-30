@@ -226,8 +226,20 @@
   font-size: 3em;
 }
 
+.fa-solid.fa-star {
+  color: #f1c248;
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  font-size: 3em;
+}
+
 .fa-regular.fa-star:hover {
   color: #f1c248;
+  cursor: pointer;
+}
+
+.fa-solid.fa-star:hover {
   cursor: pointer;
 }
 
@@ -474,6 +486,12 @@
   }
 
   .fa-regular.fa-star {
+    right: 15px;
+    bottom: 15px;
+    font-size: 1.6em;
+  }
+
+  .fa-solid.fa-star {
     right: 15px;
     bottom: 15px;
     font-size: 1.6em;
