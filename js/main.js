@@ -194,11 +194,13 @@ $seeRecipesButton.addEventListener('click', function () {
 var $views = document.querySelectorAll('.view');
 var $navber = document.querySelector('.navber');
 function viewSwapping(dataView) {
-  data.view = dataView;
+  data.view = dataView; // Set view in data to show the same view as before erfreshing.
+
   if (dataView === 'home') {
     $views[0].className = 'view';
     $views[1].className = 'view hidden';
     $views[2].className = 'view hidden';
+    $views[3].className = 'view hidden';
     $navber.style.borderBottom = 'none';
     // Clear the values up when user leave all recipes view.
     data.details = null;
@@ -209,6 +211,7 @@ function viewSwapping(dataView) {
     $views[0].className = 'view hidden';
     $views[1].className = 'view';
     $views[2].className = 'view hidden';
+    $views[3].className = 'view hidden';
     $navber.style.borderBottom = 'solid 0.5px black';
     data.details = null;
     $starIcon.className = 'fa-regular fa-star';
@@ -217,6 +220,7 @@ function viewSwapping(dataView) {
     $views[0].className = 'view hidden';
     $views[1].className = 'view hidden';
     $views[2].className = 'view';
+    $views[3].className = 'view hidden';
     $navber.style.borderBottom = 'solid 0.5px black';
     // Keep star icon yellow if the recipe was saved in favorites list
     for (var i = 0; i < data.favorites.length; i++) {
@@ -224,6 +228,14 @@ function viewSwapping(dataView) {
         $starIcon.className = 'fa-solid fa-star';
       }
     }
+  } else if (dataView === 'favorites') {
+    $views[0].className = 'view hidden';
+    $views[1].className = 'view hidden';
+    $views[2].className = 'view hidden';
+    $views[3].className = 'view';
+    $navber.style.borderBottom = 'solid 0.5px black';
+    data.details = null;
+    $starIcon.className = 'fa-regular fa-star';
   }
 }
 
@@ -380,6 +392,8 @@ $starIcon.addEventListener('click', function () {
   for (var i = 0; i < data.favorites.length; i++) {
     if (data.details.recipe.label !== data.favorites[i].recipe.label) {
       data.favorites.push(data.details);
+      var $containerForFavorites = document.querySelector('.container-for-favorites');
+      $containerForFavorites.appendChild(renderRecipe(data.details));
       break;
     }
   }
@@ -388,9 +402,8 @@ $starIcon.addEventListener('click', function () {
 
 // Use a loop to create a DOM tree for each recipe of favorites list and append it to the page
 var $containerForFavorites = document.querySelector('.container-for-favorites');
-for (var i = 0; i < data.favorites.length; i++) {
-
-  $containerForFavorites.appendChild(renderRecipe(data.favorites[i]));
+for (var n = 0; n < data.favorites.length; n++) {
+  $containerForFavorites.appendChild(renderRecipe(data.favorites[n]));
 }
 
 // Listen for clicks on the parent element of all rendered recipes in favorites view to see the details of the clicked recipe
@@ -403,7 +416,6 @@ function viewRecipeDetails(event) {
       data.details = data.favorites[i];
     }
   }
-
-  // viewSwapping('recipe-details');
+  viewSwapping('recipe-details');
   enterValuesForRecipeDetails(data.details);
 }
