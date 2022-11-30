@@ -107,7 +107,7 @@ function renderRecipe(object) {
   var $image = document.createElement('img');
   $image.setAttribute('src', object.recipe.images.REGULAR.url);
   $image.setAttribute('alt', 'a pic of ' + object.recipe.label);
-  $image.setAttribute('class', 'recipe-image'); // 使ってなければ消す
+  $image.setAttribute('class', 'recipe-image');
   $columnFull1.appendChild($image);
 
   // row 2: recipe name
@@ -423,12 +423,15 @@ for (var n = 0; n < data.favorites.length; n++) {
 $containerForFavorites.addEventListener('click', viewRecipeDetails);
 
 function viewRecipeDetails(event) {
-  var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
-  for (var i = 0; i < data.favorites.length; i++) {
-    if (data.favorites[i].recipe.label === recipeLabel) {
-      data.details = data.favorites[i];
+  if (event.target.getAttribute('class') === 'recipe-image' || event.target.getAttribute('class') === 'recipe-time' || event.target.getAttribute('class') === 'recipe-calories' || event.target.getAttribute('class') === 'recipe-cousine' || event.target.getAttribute('class') === 'recipe-wrapper' || event.target.getAttribute('class') === 'column-half timer-icon-wrapper' || event.target.getAttribute('class') === 'recipe-number-of-ingredients' || event.target.getAttribute('class') === 'recipe-name' || event.target.getAttribute('class') === 'fa-regular fa-clock fa-sm') {
+
+    var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
+    for (var i = 0; i < data.favorites.length; i++) {
+      if (data.favorites[i].recipe.label === recipeLabel) {
+        data.details = data.favorites[i];
+      }
     }
+    viewSwapping('recipe-details');
+    enterValuesForRecipeDetails(data.details);
   }
-  viewSwapping('recipe-details');
-  enterValuesForRecipeDetails(data.details);
 }
