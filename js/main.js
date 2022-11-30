@@ -57,27 +57,29 @@ xhrLunch.addEventListener('load', function () {
           for (var k = 0; k < allRecipes.length; k++) {
             var $containerForRecipes = document.querySelector('.container-for-recipes');
             $containerForRecipes.appendChild(renderRecipe(allRecipes[k]));
+            // var $allRecipesList = document.querySelector('.all-recipes-list');
+            // $allRecipesList.appendChild(allRecipes[k]);
           }
 
           // Listen for clicks on the parent element of all rendered recipes in all recipes view
           $containerForRecipes.addEventListener('click', viewRecipeDetails);
 
           function viewRecipeDetails(event) {
+            if (event.target.getAttribute('class') === 'recipe-image' || event.target.getAttribute('class') === 'recipe-time' || event.target.getAttribute('class') === 'recipe-calories' || event.target.getAttribute('class') === 'recipe-cousine' || event.target.getAttribute('class') === 'recipe-wrapper' || event.target.getAttribute('class') === 'column-half timer-icon-wrapper' || event.target.getAttribute('class') === 'recipe-number-of-ingredients' || event.target.getAttribute('class') === 'recipe-name' || event.target.getAttribute('class') === 'fa-regular fa-clock fa-sm') {
 
-            var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
+              var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
 
-            for (var i = 0; i < allRecipes.length; i++) {
-              if (allRecipes[i].recipe.label === recipeLabel) {
-                data.details = allRecipes[i];
+              for (var i = 0; i < allRecipes.length; i++) {
+                if (allRecipes[i].recipe.label === recipeLabel) {
+                  data.details = allRecipes[i];
+                }
               }
+              viewSwapping('recipe-details');
+              enterValuesForRecipeDetails(data.details);
             }
-
-            viewSwapping('recipe-details');
-            enterValuesForRecipeDetails(data.details);
-
           }
-
         });
+
         xhrDinner.send();
       });
       xhrTeatime.send();
@@ -105,6 +107,7 @@ function renderRecipe(object) {
   var $image = document.createElement('img');
   $image.setAttribute('src', object.recipe.images.REGULAR.url);
   $image.setAttribute('alt', 'a pic of ' + object.recipe.label);
+  $image.setAttribute('class', 'recipe-image'); // 使ってなければ消す
   $columnFull1.appendChild($image);
 
   // row 2: recipe name
