@@ -20,7 +20,7 @@
 }
 
 .container-for-recipes,
-.contsiner-for-favorites {
+.container-for-favorites {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

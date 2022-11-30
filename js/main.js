@@ -376,5 +376,36 @@ var $starIcon = document.querySelector('.fa-regular.fa-star');
 
 $starIcon.addEventListener('click', function () {
   $starIcon.className = 'fa-solid fa-star';
-  data.favorites.push(data.details);
+  // Add the current recipe to the favorites list if it haven't saved yet
+  for (var i = 0; i < data.favorites.length; i++) {
+    if (data.details.recipe.label !== data.favorites[i].recipe.label) {
+      data.favorites.push(data.details);
+      break;
+    }
+  }
+
 });
+
+// Use a loop to create a DOM tree for each recipe of favorites list and append it to the page
+for (var i = 0; i < data.favorites.length; i++) {
+  var $containerForFavorites = document.querySelector('.container-for-favorites');
+  $containerForFavorites.appendChild(renderRecipe(data.favorites[i]));
+}
+
+// Listen for clicks on the parent element of all rendered recipes in all recipes view
+// $containerForRecipes.addEventListener('click', viewRecipeDetails);
+
+// function viewRecipeDetails(event) {
+
+//   var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
+
+//   for (var i = 0; i < allRecipes.length; i++) {
+//     if (allRecipes[i].recipe.label === recipeLabel) {
+//       data.details = allRecipes[i];
+//     }
+//   }
+
+//   viewSwapping('recipe-details');
+//   enterValuesForRecipeDetails(data.details);
+
+// }
