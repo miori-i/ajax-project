@@ -387,25 +387,23 @@ $starIcon.addEventListener('click', function () {
 });
 
 // Use a loop to create a DOM tree for each recipe of favorites list and append it to the page
+var $containerForFavorites = document.querySelector('.container-for-favorites');
 for (var i = 0; i < data.favorites.length; i++) {
-  var $containerForFavorites = document.querySelector('.container-for-favorites');
+
   $containerForFavorites.appendChild(renderRecipe(data.favorites[i]));
 }
 
-// Listen for clicks on the parent element of all rendered recipes in all recipes view
-// $containerForRecipes.addEventListener('click', viewRecipeDetails);
+// Listen for clicks on the parent element of all rendered recipes in favorites view to see the details of the clicked recipe
+$containerForFavorites.addEventListener('click', viewRecipeDetails);
 
-// function viewRecipeDetails(event) {
+function viewRecipeDetails(event) {
+  var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
+  for (var i = 0; i < data.favorites.length; i++) {
+    if (data.favorites[i].recipe.label === recipeLabel) {
+      data.details = data.favorites[i];
+    }
+  }
 
-//   var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
-
-//   for (var i = 0; i < allRecipes.length; i++) {
-//     if (allRecipes[i].recipe.label === recipeLabel) {
-//       data.details = allRecipes[i];
-//     }
-//   }
-
-//   viewSwapping('recipe-details');
-//   enterValuesForRecipeDetails(data.details);
-
-// }
+  // viewSwapping('recipe-details');
+  enterValuesForRecipeDetails(data.details);
+}
