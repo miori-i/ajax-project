@@ -330,6 +330,14 @@
   padding: 0 35px;
 }
 
+/* ------------ favorites view-------------- */
+
+.text-favorites {
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 36px;
+  margin: 33px 67px 0;
+}
+
 /* ----- media query -----  */
 
 /* mobile screen */
@@ -563,5 +571,12 @@
     font-family: "Abhaya Libre", sans-serif;
     font-size: 10px;
     padding: 0 12px;
+  }
+
+  /* ------------ mobile favorites view------------ */
+
+  .text-favorites {
+    font-size: 23px;
+    margin: 15px 30px 0;
   }
 }
