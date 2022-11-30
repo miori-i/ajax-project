@@ -52,7 +52,6 @@ xhrLunch.addEventListener('load', function () {
           for (var i = 0; i < xhrDinner.response.hits.length; i++) {
             allRecipes.push(xhrDinner.response.hits[i]);
           }
-          // console.log('array:', allRecipes);
 
           // Use a loop to create a DOM tree for each recipe in the data model and append it to the page
           for (var k = 0; k < allRecipes.length; k++) {
@@ -64,16 +63,14 @@ xhrLunch.addEventListener('load', function () {
           $containerForRecipes.addEventListener('click', viewRecipeDetails);
 
           function viewRecipeDetails(event) {
-            // console.log('cliked elemtnt:', event.target);
 
             var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
-            // console.log('recipeLabel:', recipeLabel);
+
             for (var i = 0; i < allRecipes.length; i++) {
               if (allRecipes[i].recipe.label === recipeLabel) {
                 data.details = allRecipes[i];
               }
             }
-            // console.log('data.details:', data.details);
 
             viewSwapping('recipe-details');
             enterValuesForRecipeDetails(data.details);
@@ -228,6 +225,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function enterValuesForRecipeDetails(object) {
+
+  if (object === null) {
+    return;
+  }
   var $recipeDetailsMin = document.querySelector('.recipe-details-min');
   $recipeDetailsMin.textContent = object.recipe.totalTime + ' min';
 
