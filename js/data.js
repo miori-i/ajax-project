@@ -2,7 +2,8 @@
 
 var data = {
   view: 'entry-form',
-  details: null
+  details: null,
+  favorites: []
 };
 
 // To write the data in entries property before unload, stginfy it

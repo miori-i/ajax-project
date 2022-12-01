@@ -19,13 +19,15 @@
   flex-basis: calc(200% / 3);
 }
 
-.container-for-recipes {
+.container-for-recipes,
+.container-for-favorites {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.container-for-recipes::before {
+.container-for-recipes::before,
+.container-for-favorites::before {
   content: "";
   display: block;
   width: 300px;
@@ -33,7 +35,8 @@
   order: 1;
 }
 
-.container-for-recipes::after {
+.container-for-recipes::after,
+.container-for-favorites::after {
   content: "";
   display: block;
   width: 300px;

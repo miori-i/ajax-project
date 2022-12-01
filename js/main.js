@@ -52,35 +52,34 @@ xhrLunch.addEventListener('load', function () {
           for (var i = 0; i < xhrDinner.response.hits.length; i++) {
             allRecipes.push(xhrDinner.response.hits[i]);
           }
-          // console.log('array:', allRecipes);
 
           // Use a loop to create a DOM tree for each recipe in the data model and append it to the page
           for (var k = 0; k < allRecipes.length; k++) {
             var $containerForRecipes = document.querySelector('.container-for-recipes');
             $containerForRecipes.appendChild(renderRecipe(allRecipes[k]));
+            // var $allRecipesList = document.querySelector('.all-recipes-list');
+            // $allRecipesList.appendChild(allRecipes[k]);
           }
 
           // Listen for clicks on the parent element of all rendered recipes in all recipes view
           $containerForRecipes.addEventListener('click', viewRecipeDetails);
 
           function viewRecipeDetails(event) {
-            // console.log('cliked elemtnt:', event.target);
+            if (event.target.getAttribute('class') === 'recipe-image' || event.target.getAttribute('class') === 'recipe-time' || event.target.getAttribute('class') === 'recipe-calories' || event.target.getAttribute('class') === 'recipe-cousine' || event.target.getAttribute('class') === 'recipe-wrapper' || event.target.getAttribute('class') === 'column-half timer-icon-wrapper' || event.target.getAttribute('class') === 'recipe-number-of-ingredients' || event.target.getAttribute('class') === 'recipe-name' || event.target.getAttribute('class') === 'fa-regular fa-clock fa-sm') {
 
-            var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
-            // console.log('recipeLabel:', recipeLabel);
-            for (var i = 0; i < allRecipes.length; i++) {
-              if (allRecipes[i].recipe.label === recipeLabel) {
-                data.details = allRecipes[i];
+              var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
+
+              for (var i = 0; i < allRecipes.length; i++) {
+                if (allRecipes[i].recipe.label === recipeLabel) {
+                  data.details = allRecipes[i];
+                }
               }
+              viewSwapping('recipe-details');
+              enterValuesForRecipeDetails(data.details);
             }
-            // console.log('data.details:', data.details);
-
-            viewSwapping('recipe-details');
-            enterValuesForRecipeDetails(data.details);
-
           }
-
         });
+
         xhrDinner.send();
       });
       xhrTeatime.send();
@@ -108,6 +107,7 @@ function renderRecipe(object) {
   var $image = document.createElement('img');
   $image.setAttribute('src', object.recipe.images.REGULAR.url);
   $image.setAttribute('alt', 'a pic of ' + object.recipe.label);
+  $image.setAttribute('class', 'recipe-image');
   $columnFull1.appendChild($image);
 
   // row 2: recipe name
@@ -197,27 +197,53 @@ $seeRecipesButton.addEventListener('click', function () {
 var $views = document.querySelectorAll('.view');
 var $navber = document.querySelector('.navber');
 function viewSwapping(dataView) {
-  data.view = dataView;
+  data.view = dataView; // Set view in data to show the same view as before erfreshing.
+
   if (dataView === 'home') {
     $views[0].className = 'view';
     $views[1].className = 'view hidden';
     $views[2].className = 'view hidden';
+    $views[3].className = 'view hidden';
     $navber.style.borderBottom = 'none';
     // Clear the values up when user leave all recipes view.
     data.details = null;
+    // Reset the star icon
+    $starIcon.className = 'fa-regular fa-star';
 
   } else if (dataView === 'all-recipes') {
     $views[0].className = 'view hidden';
     $views[1].className = 'view';
     $views[2].className = 'view hidden';
+    $views[3].className = 'view hidden';
     $navber.style.borderBottom = 'solid 0.5px black';
     data.details = null;
+    $starIcon.className = 'fa-regular fa-star';
 
   } else if (dataView === 'recipe-details') {
     $views[0].className = 'view hidden';
     $views[1].className = 'view hidden';
     $views[2].className = 'view';
+    $views[3].className = 'view hidden';
     $navber.style.borderBottom = 'solid 0.5px black';
+    // Keep star icon yellow if the recipe was saved in favorites list
+    for (var i = 0; i < data.favorites.length; i++) {
+      if (data.details.recipe.label === data.favorites[i].recipe.label) {
+        $starIcon.className = 'fa-solid fa-star';
+      }
+    }
+  } else if (dataView === 'favorites') {
+    $views[0].className = 'view hidden';
+    $views[1].className = 'view hidden';
+    $views[2].className = 'view hidden';
+    $views[3].className = 'view';
+    $navber.style.borderBottom = 'solid 0.5px black';
+    data.details = null;
+    $starIcon.className = 'fa-regular fa-star';
+    // Hide "No recipes have been added in favorites." if favorites array is not empty
+    if (data.favorites.length > 0) {
+      var $noRecipeInFavorites = document.querySelector('.no-recipes-in-favirites');
+      $noRecipeInFavorites.className = 'no-recipes-in-favirites hidden';
+    }
   }
 }
 
@@ -228,6 +254,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function enterValuesForRecipeDetails(object) {
+
+  if (object === null) {
+    return;
+  }
   var $recipeDetailsMin = document.querySelector('.recipe-details-min');
   $recipeDetailsMin.textContent = object.recipe.totalTime + ' min';
 
@@ -359,4 +389,49 @@ function enterValuesForRecipeDetails(object) {
 
   var $water = document.querySelector('.water');
   $water.textContent = Math.round(object.recipe.totalNutrients.WATER.quantity) + object.recipe.totalNutrients.WATER.unit;
+}
+
+// Listen for clicks on the star icon to save the recipe to favorites list
+var $starIcon = document.querySelector('.fa-regular.fa-star');
+
+$starIcon.addEventListener('click', function () {
+  $starIcon.className = 'fa-solid fa-star';
+  // Add the current recipe to the favorites list if it haven't saved yet
+  var alreadyInFavoritesList = null;
+  for (var i = 0; i < data.favorites.length; i++) {
+    if (data.details.recipe.label === data.favorites[i].recipe.label) {
+      alreadyInFavoritesList = 'yes';
+      break;
+    } else {
+      alreadyInFavoritesList = 'no';
+    }
+  }
+  if (alreadyInFavoritesList === 'no' || alreadyInFavoritesList === null) {
+    data.favorites.push(data.details);
+    var $containerForFavorites = document.querySelector('.container-for-favorites');
+    $containerForFavorites.appendChild(renderRecipe(data.details));
+  }
+});
+
+// Use a loop to create a DOM tree for each recipe of favorites list and append it to the page
+var $containerForFavorites = document.querySelector('.container-for-favorites');
+for (var n = 0; n < data.favorites.length; n++) {
+  $containerForFavorites.appendChild(renderRecipe(data.favorites[n]));
+}
+
+// Listen for clicks on the parent element of all rendered recipes in favorites view to see the details of the clicked recipe
+$containerForFavorites.addEventListener('click', viewRecipeDetails);
+
+function viewRecipeDetails(event) {
+  if (event.target.getAttribute('class') === 'recipe-image' || event.target.getAttribute('class') === 'recipe-time' || event.target.getAttribute('class') === 'recipe-calories' || event.target.getAttribute('class') === 'recipe-cousine' || event.target.getAttribute('class') === 'recipe-wrapper' || event.target.getAttribute('class') === 'column-half timer-icon-wrapper' || event.target.getAttribute('class') === 'recipe-number-of-ingredients' || event.target.getAttribute('class') === 'recipe-name' || event.target.getAttribute('class') === 'fa-regular fa-clock fa-sm') {
+
+    var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
+    for (var i = 0; i < data.favorites.length; i++) {
+      if (data.favorites[i].recipe.label === recipeLabel) {
+        data.details = data.favorites[i];
+      }
+    }
+    viewSwapping('recipe-details');
+    enterValuesForRecipeDetails(data.details);
+  }
 }

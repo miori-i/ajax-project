@@ -22,7 +22,7 @@
       <ul class="navber-list">
         <li class="navber-listitem"><a href="#" data-view="home" class="nav-ajax-project" name="home">AJAX Project</a></li>
         <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-recipes" name="all-recipes">Recipes</a></li>
-        <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-favorites" name="favorites">Favorites</a></li>
+        <li class="navber-listitem"><a href="#" data-view="favorites" class="nav-favorites" name="favorites">Favorites</a></li>
       </ul>
     </nav>
   </header>
@@ -72,10 +72,11 @@
           <p class="recipe-details-title">Christmas Cookies</p>
         </div>
         <!-- row 3: image -->
-        <div class="row">
+        <div class="row recipe-details-img-wrapper">
           <img src="images/pexels-antoni-shkraba-5589046.jpg" alt="a pic of recipe" class="image-for-recipe-details">
+          <i class="fa-regular fa-star"></i>
         </div>
-        <!-- row 4: 2nd box -->
+        <!-- row 4: 2nd box above the center line-->
         <div class="row recipe-details-box-2-1">
           <div class="column-half mobile">
             <p class="recipe-details-ingredients">Ingredients</p>
@@ -87,8 +88,7 @@
             <p class="see-directions">See directions on <a href="#" class="original-url">Food Networks</a></p>
           </div>
         </div>
-
-        <!-- row5 -->
+        <!-- row5: 2nd box below the center line -->
         <div class="row recipe-details-box-2-2">
           <div class="column-full middle-border">
             <p class="recipe-details-nutritions">Nutritions</p>
@@ -300,10 +300,20 @@
             </li>
           </ul>
         </div>
-
-
       </div>
     </div>
+
+    <!------------ favorites list ------------>
+    <div data-view="favorites" class="view">
+      <p class="text-favorites">Favorites</p>
+      <p class="no-recipes-in-favirites">No recipes have been added in favorites.</p>
+
+      <!-- お気に入りレシピたちの箱 -->
+      <div class="container-for-favorites">
+      </div>
+    </div>
+
+
 
 
   </main>
