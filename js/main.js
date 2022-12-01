@@ -435,3 +435,10 @@ function viewRecipeDetails(event) {
     enterValuesForRecipeDetails(data.details);
   }
 }
+
+// Listen for 'submit' events on the comment form
+var $form = document.querySelector('.comment-form');
+
+$form.addEventListener('submit', function (event) {
+  event.preventDefault();
+});
