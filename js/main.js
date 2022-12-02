@@ -246,6 +246,20 @@ function viewSwapping(dataView) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+// Use a loop to create a DOM tree for each journal entry in the data model
+// and append it to the page when the 'DOMContentLoaded' event is fired.
+  if (data.details !== null) {
+    for (var i = 0; i < data.conversation.length; i++) {
+      if (data.details.recipe.label === data.conversation[i].label) {
+        for (var k = 0; k < data.conversation[i].comments.length; k++) {
+          var domTree = renderComment(data.conversation[i].comments[k]);
+          var $commentList = document.querySelector('.comment-list');
+          $commentList.appendChild(domTree);
+        }
+      }
+    }
+  }
+
   // refreshing the pages shows the same view as before refreshing
   viewSwapping(data.view);
   enterValuesForRecipeDetails(data.details);
@@ -440,16 +454,78 @@ var $form = document.querySelector('.comment-form');
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  // Put the form's input values into a new object.
-  var conversationObject = {};
-  conversationObject.label = data.details.recipe.label;
-  conversationObject.comments = [];
-  var commentObject = {};
-  commentObject.name = $form.elements.name.value;
-  commentObject.comment = $form.elements.comment.value;
-  conversationObject.comments.push(commentObject);
+  // Check is the conversation object for the resipe exists alread
+  var exist = null;
+  if (data.conversation.length === 0) {
+    exist = 'no';
+  }
+  for (var i = 0; i < data.conversation.length; i++) {
+    if (data.details.recipe.label === data.conversation[i].label) {
+      exist = 'yes';
+      break;
+    } else {
+      exist = 'no';
+    }
+  }
 
-  // Append the new object to comments in the data model
-  data.conversation.push(conversationObject);
+  // If the conversation object exists for the recipe and put the form's input values into a new object.
+  if (exist === 'yes') {
+    // Create new comment object and put the form's input
+    var newComment = {};
+    newComment.name = $form.elements.name.value;
+    newComment.comment = $form.elements.comment.value;
 
+    // Append the new object to comments in the data model
+    data.conversation[i].comments.push(newComment);
+
+    // Creates a new DOM tree for it and adds it to the page
+    var newDOMtree = renderComment(newComment);
+    var $commentList = document.querySelector('.comment-list');
+    $commentList.appendChild(newDOMtree);
+
+    // Reset the form inputs.
+    $form.reset();
+  }
+
+  if (exist === 'no') {
+  // If the conversation object doesn't exist for the recipe and create new object.
+    var conversationObject = {};
+    conversationObject.label = data.details.recipe.label;
+    conversationObject.comments = [];
+    data.conversation.push(conversationObject);
+
+    // Put the form's input values into a new object.
+    newComment = {};
+    newComment.name = $form.elements.name.value;
+    newComment.comment = $form.elements.comment.value;
+
+    // Append the new object to comments in the data model
+    data.conversation[data.conversation.length - 1].comments.push(newComment);
+
+    // Creates a new DOM tree for the coment and adds it to the page
+    newDOMtree = renderComment(newComment);
+    $commentList = document.querySelector('.comment-list');
+    $commentList.appendChild(newDOMtree);
+
+    // Reset the form inputs.
+    $form.reset();
+  }
 });
+
+// Render function for each comment
+function renderComment(object) {
+  var $commentWrapper = document.createElement('li');
+  $commentWrapper.setAttribute('class', 'comment-wrapper');
+
+  var $nameOfcomment = document.createElement('p');
+  $nameOfcomment.setAttribute('class', 'name-of-comment');
+  $nameOfcomment.textContent = object.name;
+  $commentWrapper.appendChild($nameOfcomment);
+
+  var $textOfComment = document.createElement('p');
+  $textOfComment.setAttribute('class', 'text-of-comment');
+  $textOfComment.textContent = object.comment;
+  $commentWrapper.appendChild($textOfComment);
+
+  return $commentWrapper;
+}
