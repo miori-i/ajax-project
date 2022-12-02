@@ -57,8 +57,6 @@ xhrLunch.addEventListener('load', function () {
           for (var k = 0; k < allRecipes.length; k++) {
             var $containerForRecipes = document.querySelector('.container-for-recipes');
             $containerForRecipes.appendChild(renderRecipe(allRecipes[k]));
-            // var $allRecipesList = document.querySelector('.all-recipes-list');
-            // $allRecipesList.appendChild(allRecipes[k]);
           }
 
           // Listen for clicks on the parent element of all rendered recipes in all recipes view
@@ -441,4 +439,17 @@ var $form = document.querySelector('.comment-form');
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
+
+  // Put the form's input values into a new object.
+  var conversationObject = {};
+  conversationObject.label = data.details.recipe.label;
+  conversationObject.comments = [];
+  var commentObject = {};
+  commentObject.name = $form.elements.name.value;
+  commentObject.comment = $form.elements.comment.value;
+  conversationObject.comments.push(commentObject);
+
+  // Append the new object to comments in the data model
+  data.conversation.push(conversationObject);
+
 });
