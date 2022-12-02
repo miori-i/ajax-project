@@ -64,9 +64,7 @@ xhrLunch.addEventListener('load', function () {
 
           function viewRecipeDetails(event) {
             if (event.target.getAttribute('class') === 'recipe-image' || event.target.getAttribute('class') === 'recipe-time' || event.target.getAttribute('class') === 'recipe-calories' || event.target.getAttribute('class') === 'recipe-cousine' || event.target.getAttribute('class') === 'recipe-wrapper' || event.target.getAttribute('class') === 'column-half timer-icon-wrapper' || event.target.getAttribute('class') === 'recipe-number-of-ingredients' || event.target.getAttribute('class') === 'recipe-name' || event.target.getAttribute('class') === 'fa-regular fa-clock fa-sm') {
-
               var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
-
               for (var i = 0; i < allRecipes.length; i++) {
                 if (allRecipes[i].recipe.label === recipeLabel) {
                   data.details = allRecipes[i];
@@ -251,13 +249,10 @@ function viewSwapping(dataView) {
       var $noRecipeInFavorites = document.querySelector('.no-recipes-in-favirites');
       $noRecipeInFavorites.className = 'no-recipes-in-favirites hidden';
     }
-
   }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-// Use a loop to create a DOM tree for each journal entry in the data model
-// and append it to the page when the 'DOMContentLoaded' event is fired.
   showCommentsForCorrectRecipe();
 
   // refreshing the pages shows the same view as before refreshing
@@ -483,8 +478,6 @@ $form.addEventListener('submit', function (event) {
     var $commentList = document.querySelector('#comment-list');
     $commentList.appendChild(newDOMtree);
 
-    // // Reset the form inputs.
-    // $form.reset();
   }
 
   if (exist === 'no') {
@@ -507,8 +500,6 @@ $form.addEventListener('submit', function (event) {
     $commentList = document.querySelector('#comment-list');
     $commentList.appendChild(newDOMtree);
 
-    // // Reset the form inputs.
-    // $form.reset();
   }
 
   // Updata the number of comments
@@ -541,6 +532,7 @@ function renderComment(object) {
   return $commentWrapper;
 }
 
+// Use a loop to create a DOM tree for each comment pbject in the data model and append it to the page.
 function showCommentsForCorrectRecipe() {
   if (data.details !== null) {
     for (var i = 0; i < data.conversation.length; i++) {
@@ -553,7 +545,6 @@ function showCommentsForCorrectRecipe() {
         // Updata the number of comments
         var $numberOfComments = document.querySelector('.number-of-comments');
         $numberOfComments.textContent = data.conversation[i].comments.length + ' comments';
-
       }
     }
   }
