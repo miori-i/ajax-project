@@ -402,7 +402,7 @@
 
 /* ----- comments (recipe details view) ----- */
 
-.comment-list {
+#comment-list {
   list-style: none;
   padding: 0;
   margin: 40px 90px;

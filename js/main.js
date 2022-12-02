@@ -229,6 +229,15 @@ function viewSwapping(dataView) {
         $starIcon.className = 'fa-solid fa-star';
       }
     }
+    // Reset domtree and the number of comment up and show correct domtree and #
+    var $commentList = document.getElementById('comment-list');
+    while ($commentList.firstChild) {
+      $commentList.removeChild($commentList.firstChild);
+    }
+    var $numberOfComments = document.querySelector('.number-of-comments');
+    $numberOfComments.textContent = '0 comments';
+    showCommentsForCorrectRecipe();
+
   } else if (dataView === 'favorites') {
     $views[0].className = 'view hidden';
     $views[1].className = 'view hidden';
@@ -242,23 +251,14 @@ function viewSwapping(dataView) {
       var $noRecipeInFavorites = document.querySelector('.no-recipes-in-favirites');
       $noRecipeInFavorites.className = 'no-recipes-in-favirites hidden';
     }
+
   }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
 // Use a loop to create a DOM tree for each journal entry in the data model
 // and append it to the page when the 'DOMContentLoaded' event is fired.
-  if (data.details !== null) {
-    for (var i = 0; i < data.conversation.length; i++) {
-      if (data.details.recipe.label === data.conversation[i].label) {
-        for (var k = 0; k < data.conversation[i].comments.length; k++) {
-          var domTree = renderComment(data.conversation[i].comments[k]);
-          var $commentList = document.querySelector('.comment-list');
-          $commentList.appendChild(domTree);
-        }
-      }
-    }
-  }
+  showCommentsForCorrectRecipe();
 
   // refreshing the pages shows the same view as before refreshing
   viewSwapping(data.view);
@@ -480,11 +480,11 @@ $form.addEventListener('submit', function (event) {
 
     // Creates a new DOM tree for it and adds it to the page
     var newDOMtree = renderComment(newComment);
-    var $commentList = document.querySelector('.comment-list');
+    var $commentList = document.querySelector('#comment-list');
     $commentList.appendChild(newDOMtree);
 
-    // Reset the form inputs.
-    $form.reset();
+    // // Reset the form inputs.
+    // $form.reset();
   }
 
   if (exist === 'no') {
@@ -504,12 +504,23 @@ $form.addEventListener('submit', function (event) {
 
     // Creates a new DOM tree for the coment and adds it to the page
     newDOMtree = renderComment(newComment);
-    $commentList = document.querySelector('.comment-list');
+    $commentList = document.querySelector('#comment-list');
     $commentList.appendChild(newDOMtree);
 
-    // Reset the form inputs.
-    $form.reset();
+    // // Reset the form inputs.
+    // $form.reset();
   }
+
+  // Updata the number of comments
+  for (var n = 0; n < data.conversation.length; n++) {
+    if (data.details.recipe.label === data.conversation[n].label) {
+      var $numberOfComments = document.querySelector('.number-of-comments');
+      $numberOfComments.textContent = data.conversation[n].comments.length + ' comments';
+    }
+  }
+
+  // Reset the form inputs.
+  $form.reset();
 });
 
 // Render function for each comment
@@ -528,4 +539,22 @@ function renderComment(object) {
   $commentWrapper.appendChild($textOfComment);
 
   return $commentWrapper;
+}
+
+function showCommentsForCorrectRecipe() {
+  if (data.details !== null) {
+    for (var i = 0; i < data.conversation.length; i++) {
+      if (data.details.recipe.label === data.conversation[i].label) {
+        for (var k = 0; k < data.conversation[i].comments.length; k++) {
+          var domTree = renderComment(data.conversation[i].comments[k]);
+          var $commentList = document.querySelector('#comment-list');
+          $commentList.appendChild(domTree);
+        }
+        // Updata the number of comments
+        var $numberOfComments = document.querySelector('.number-of-comments');
+        $numberOfComments.textContent = data.conversation[i].comments.length + ' comments';
+
+      }
+    }
+  }
 }
