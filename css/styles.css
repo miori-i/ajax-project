@@ -400,6 +400,31 @@
   cursor: pointer;
 }
 
+/* ----- comments (recipe details view) ----- */
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 40px 90px;
+}
+
+.comment-wrapper {
+  border-bottom: 1px solid #ccc6c6;
+}
+
+.name-of-comment {
+  font-family: "Abhaya Libre", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 15px 0 5px 15px;
+}
+
+.text-of-comment {
+  font-family: "Abhaya Libre", sans-serif;
+  font-size: 20px;
+  margin: 0 0 15px 15px;
+}
+
 /* ------------ favorites view-------------- */
 
 .text-favorites {
@@ -653,7 +678,7 @@
   /* ----------- mobile form (recipe details view) --------- */
 
   .container-for-form {
-    margin: 30px 40px 50px;
+    margin: 30px 40px 0;
   }
 
   .column-one-ten,
@@ -686,21 +711,21 @@
     border-radius: 4px;
     padding-left: 10px;
     margin-bottom: 7px;
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .input-comment {
     width: 100%;
-    height: calc(25px * 4);
-    line-height: 25px;
+    height: calc(25px * 3);
+    line-height: 18px;
     border-radius: 4px;
     padding: 7px 10px;
     margin-bottom: 3px;
-    font-size: 15px;
+    font-size: 13px;
   }
 
   ::placeholder {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .post-button {
@@ -713,6 +738,21 @@
 
   .post-button-wrapper {
     text-align: right;
+  }
+
+  /* ----- mobile comments (recipe details view) ----- */
+  .comment-list {
+    margin: -15px 40px 40px;
+  }
+
+  .name-of-comment {
+    font-size: 12px;
+    margin: 8px 0 2px 10px;
+  }
+
+  .text-of-comment {
+    font-size: 12px;
+    margin: 0 0 5px 10px;
   }
 
   /* ------------ mobile favorites view------------ */
