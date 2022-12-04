@@ -93,10 +93,27 @@
 
 /* ------- all recipes view ------- */
 
+#all-recipes {
+  position: relative;
+}
+
 .text-all-recipes {
   font-family: "Abhaya Libre", sans-serif;
   font-size: 36px;
   margin: 33px 67px 0;
+}
+
+#type-of-cuisine {
+  position: absolute;
+  left: 270px;
+  top: 6px;
+  width: 150px;
+  border-radius: 18px;
+  border: 2px solid #cec7c7;
+  padding: 4px 15px 3px;
+  font-family: "Abhaya Libre", sans-serif;
+  color: #878282;
+  font-size: 18px;
 }
 
 .recipe-wrapper {

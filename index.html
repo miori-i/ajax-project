@@ -41,8 +41,34 @@
     </div>
 
     <!------------ all recipes ------------>
-    <div data-view="all-recipes" class="view hidden">
+    <div data-view="all-recipes" class="view hidden" id="all-recipes">
       <p class="text-all-recipes">All Recipes</p>
+      <form>
+        <select id="type-of-cuisine">
+          <option value="cuisine-type">Cuisine Type</option>
+          <option value="american">American</option>
+          <option value="asian">Asian</option>
+          <option value="british">British</option>
+          <option value="caribbean">Caribbean</option>
+          <option value="central-europe">Central Europe</option>
+          <option value="chinese">Chinese</option>
+          <option value="eastern-europe">Eastern Europe</option>
+          <option value="french">French</option>
+          <option value="greek">Greek</option>
+          <option value="indian">Indian</option>
+          <option value="italian">Italian</option>
+          <option value="japanese">Japanese</option>
+          <option value="korean">Korean</option>
+          <option value="kosher">Kosher</option>
+          <option value="mediterranean">Mediterranean</option>
+          <option value="mexican">Mexican</option>
+          <option value="middle-eastern">Middle Eastern</option>
+          <option value="nordic">Nordic</option>
+          <option value="south-american">South American</option>
+          <option value="south-east-asian">South East Asian</option>
+          <option value="world">World</option>
+        </select>
+      </form>
 
       <!-- レシピたちの箱 -->
       <div class="container-for-recipes">
