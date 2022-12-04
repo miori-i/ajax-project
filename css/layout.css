@@ -19,6 +19,18 @@
   flex-basis: calc(200% / 3);
 }
 
+.column-one-ten {
+  flex-basis: calc(100% / 10);
+}
+
+.column-two-ten {
+  flex-basis: calc(200% / 10);
+}
+
+.column-seven-ten {
+  flex-basis: calc(700% / 10);
+}
+
 .container-for-recipes,
 .container-for-favorites {
   display: flex;
@@ -49,4 +61,8 @@
 
 .container-for-recipe-details {
   margin: 40px 60px;
+}
+
+.container-for-form {
+  margin: 60px 90px 0;
 }

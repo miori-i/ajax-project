@@ -57,8 +57,6 @@ xhrLunch.addEventListener('load', function () {
           for (var k = 0; k < allRecipes.length; k++) {
             var $containerForRecipes = document.querySelector('.container-for-recipes');
             $containerForRecipes.appendChild(renderRecipe(allRecipes[k]));
-            // var $allRecipesList = document.querySelector('.all-recipes-list');
-            // $allRecipesList.appendChild(allRecipes[k]);
           }
 
           // Listen for clicks on the parent element of all rendered recipes in all recipes view
@@ -66,9 +64,7 @@ xhrLunch.addEventListener('load', function () {
 
           function viewRecipeDetails(event) {
             if (event.target.getAttribute('class') === 'recipe-image' || event.target.getAttribute('class') === 'recipe-time' || event.target.getAttribute('class') === 'recipe-calories' || event.target.getAttribute('class') === 'recipe-cousine' || event.target.getAttribute('class') === 'recipe-wrapper' || event.target.getAttribute('class') === 'column-half timer-icon-wrapper' || event.target.getAttribute('class') === 'recipe-number-of-ingredients' || event.target.getAttribute('class') === 'recipe-name' || event.target.getAttribute('class') === 'fa-regular fa-clock fa-sm') {
-
               var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
-
               for (var i = 0; i < allRecipes.length; i++) {
                 if (allRecipes[i].recipe.label === recipeLabel) {
                   data.details = allRecipes[i];
@@ -231,6 +227,15 @@ function viewSwapping(dataView) {
         $starIcon.className = 'fa-solid fa-star';
       }
     }
+    // Reset domtree and the number of comment up and show correct domtree and #
+    var $commentList = document.getElementById('comment-list');
+    while ($commentList.firstChild) {
+      $commentList.removeChild($commentList.firstChild);
+    }
+    var $numberOfComments = document.querySelector('.number-of-comments');
+    $numberOfComments.textContent = '0 comments';
+    showCommentsForCorrectRecipe();
+
   } else if (dataView === 'favorites') {
     $views[0].className = 'view hidden';
     $views[1].className = 'view hidden';
@@ -248,6 +253,8 @@ function viewSwapping(dataView) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  showCommentsForCorrectRecipe();
+
   // refreshing the pages shows the same view as before refreshing
   viewSwapping(data.view);
   enterValuesForRecipeDetails(data.details);
@@ -433,5 +440,112 @@ function viewRecipeDetails(event) {
     }
     viewSwapping('recipe-details');
     enterValuesForRecipeDetails(data.details);
+  }
+}
+
+// Listen for 'submit' events on the comment form
+var $form = document.querySelector('.comment-form');
+
+$form.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  // Check is the conversation object for the resipe exists alread
+  var exist = null;
+  if (data.conversation.length === 0) {
+    exist = 'no';
+  }
+  for (var i = 0; i < data.conversation.length; i++) {
+    if (data.details.recipe.label === data.conversation[i].label) {
+      exist = 'yes';
+      break;
+    } else {
+      exist = 'no';
+    }
+  }
+
+  // If the conversation object exists for the recipe and put the form's input values into a new object.
+  if (exist === 'yes') {
+    // Create new comment object and put the form's input
+    var newComment = {};
+    newComment.name = $form.elements.name.value;
+    newComment.comment = $form.elements.comment.value;
+
+    // Append the new object to comments in the data model
+    data.conversation[i].comments.push(newComment);
+
+    // Creates a new DOM tree for it and adds it to the page
+    var newDOMtree = renderComment(newComment);
+    var $commentList = document.querySelector('#comment-list');
+    $commentList.appendChild(newDOMtree);
+
+  }
+
+  if (exist === 'no') {
+  // If the conversation object doesn't exist for the recipe and create new object.
+    var conversationObject = {};
+    conversationObject.label = data.details.recipe.label;
+    conversationObject.comments = [];
+    data.conversation.push(conversationObject);
+
+    // Put the form's input values into a new object.
+    newComment = {};
+    newComment.name = $form.elements.name.value;
+    newComment.comment = $form.elements.comment.value;
+
+    // Append the new object to comments in the data model
+    data.conversation[data.conversation.length - 1].comments.push(newComment);
+
+    // Creates a new DOM tree for the coment and adds it to the page
+    newDOMtree = renderComment(newComment);
+    $commentList = document.querySelector('#comment-list');
+    $commentList.appendChild(newDOMtree);
+
+  }
+
+  // Updata the number of comments
+  for (var n = 0; n < data.conversation.length; n++) {
+    if (data.details.recipe.label === data.conversation[n].label) {
+      var $numberOfComments = document.querySelector('.number-of-comments');
+      $numberOfComments.textContent = data.conversation[n].comments.length + ' comments';
+    }
+  }
+
+  // Reset the form inputs.
+  $form.reset();
+});
+
+// Render function for each comment
+function renderComment(object) {
+  var $commentWrapper = document.createElement('li');
+  $commentWrapper.setAttribute('class', 'comment-wrapper');
+
+  var $nameOfcomment = document.createElement('p');
+  $nameOfcomment.setAttribute('class', 'name-of-comment');
+  $nameOfcomment.textContent = object.name;
+  $commentWrapper.appendChild($nameOfcomment);
+
+  var $textOfComment = document.createElement('p');
+  $textOfComment.setAttribute('class', 'text-of-comment');
+  $textOfComment.textContent = object.comment;
+  $commentWrapper.appendChild($textOfComment);
+
+  return $commentWrapper;
+}
+
+// Use a loop to create a DOM tree for each comment pbject in the data model and append it to the page.
+function showCommentsForCorrectRecipe() {
+  if (data.details !== null) {
+    for (var i = 0; i < data.conversation.length; i++) {
+      if (data.details.recipe.label === data.conversation[i].label) {
+        for (var k = 0; k < data.conversation[i].comments.length; k++) {
+          var domTree = renderComment(data.conversation[i].comments[k]);
+          var $commentList = document.querySelector('#comment-list');
+          $commentList.appendChild(domTree);
+        }
+        // Updata the number of comments
+        var $numberOfComments = document.querySelector('.number-of-comments');
+        $numberOfComments.textContent = data.conversation[i].comments.length + ' comments';
+      }
+    }
   }
 }
