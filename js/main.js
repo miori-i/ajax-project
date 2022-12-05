@@ -74,6 +74,11 @@ xhrLunch.addEventListener('load', function () {
               enterValuesForRecipeDetails(data.details);
             }
           }
+
+          // Listen for "change" events on the drop - down boxes
+          var $selectTypeOfCuisine = document.getElementById('type-of-cuisine');
+          $selectTypeOfCuisine.addEventListener('change', filterTypeOfCuisine);
+
         });
 
         xhrDinner.send();
@@ -548,4 +553,390 @@ function showCommentsForCorrectRecipe() {
       }
     }
   }
+}
+
+// Filter recipes by cuisine type and show them by using a loop to create a DOM tree for each recipe in the data model and append it to the page
+function filterTypeOfCuisine(event) {
+  // value = selected type pf cuisine
+  var value = event.currentTarget.value;
+
+  // Clear domtree up
+  var $containerForRecipes = document.querySelector('.container-for-recipes');
+  while ($containerForRecipes.firstChild) {
+    $containerForRecipes.removeChild($containerForRecipes.firstChild);
+  }
+
+  if (value === 'american') {
+    // Show the macching recipes by using a loop to create a DOM tree for each recipe in the data model and append it to the page
+    for (var i = 0; i < allRecipes.length; i++) {
+      for (var n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'american') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    // Show message if there is no matching recipe
+    var hasChiledelement = $containerForRecipes.hasChildNodes(); // Check if there is child element of the recipe container
+    if (hasChiledelement === false) {
+      var $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no American recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'asian') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'asian') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Asian recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'british') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'british') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no British recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'caribbean') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'caribbean') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Caribbean recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'central-europe') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'central europe') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Central Europe recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'chinese') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'chinese') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Chinese recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'eastern-europe') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'eastern europe') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Eastern Europe recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'french') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'french') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no French recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'greek') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'greek') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Greek recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'indian') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'indian') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Indian recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'italian') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'italian') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Italian recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'japanese') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'japanese') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Japanese recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'korean') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'korean') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Korean recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'kosher') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'kosher') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Kosher recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'mediterranean') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'mediterranean') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Mediterranean recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'mexican') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'mexican') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Mexican recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'middle-eastern') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'middle eastern') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Middle Eastern recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'nordic') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'nordic') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no Nordic recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'south-american') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'south american') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no South American recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'south-east-asian') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'south east asian') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no South East Asian recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'world') {
+    for (i = 0; i < allRecipes.length; i++) {
+      for (n = 0; n < allRecipes[i].recipe.cuisineType.length; n++) {
+        if (allRecipes[i].recipe.cuisineType[n] === 'world') {
+          $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+        }
+      }
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no World recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+
+  } else if (value === 'cuisine-type') {
+    for (i = 0; i < allRecipes.length; i++) {
+      $containerForRecipes.appendChild(renderRecipe(allRecipes[i]));
+    }
+    hasChiledelement = $containerForRecipes.hasChildNodes();
+    if (hasChiledelement === false) {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = 'There is no recipe.';
+    } else {
+      $noRecipeMessage = document.querySelector('.no-recipe-message');
+      $noRecipeMessage.textContent = ' ';
+    }
+  }
+
 }

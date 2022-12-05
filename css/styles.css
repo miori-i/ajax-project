@@ -103,6 +103,13 @@
   margin: 33px 67px 0;
 }
 
+.no-recipe-message {
+  font-family: "Abhaya Libre", sans-serif;
+  text-align: center;
+  font-size: 25px;
+  padding-top: 60px;
+}
+
 #type-of-cuisine {
   position: absolute;
   left: 270px;
@@ -525,6 +532,11 @@
   .text-all-recipes {
     font-size: 23px;
     margin: 15px 30px 0;
+  }
+
+  .no-recipe-message {
+    font-size: 15px;
+    padding-top: 0;
   }
 
   #type-of-cuisine {
