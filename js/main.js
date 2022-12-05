@@ -405,7 +405,6 @@ function enterValuesForRecipeDetails(object) {
 
 // Listen for clicks on the star icon to save the recipe to favorites list
 var $starIcon = document.querySelector('.fa-regular.fa-star');
-
 $starIcon.addEventListener('click', function () {
   $starIcon.className = 'fa-solid fa-star';
   // Add the current recipe to the favorites list if it haven't saved yet
@@ -450,7 +449,6 @@ function viewRecipeDetails(event) {
 
 // Listen for 'submit' events on the comment form
 var $form = document.querySelector('.comment-form');
-
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -470,6 +468,7 @@ $form.addEventListener('submit', function (event) {
 
   // If the conversation object exists for the recipe and put the form's input values into a new object.
   if (exist === 'yes') {
+
     // Create new comment object and put the form's input
     var newComment = {};
     newComment.name = $form.elements.name.value;
@@ -482,6 +481,14 @@ $form.addEventListener('submit', function (event) {
     var newDOMtree = renderComment(newComment);
     var $commentList = document.querySelector('#comment-list');
     $commentList.appendChild(newDOMtree);
+
+    // Add underline of the comment that was last before adding new commnet
+    var $commentWrappers = document.querySelectorAll('.comment-wrapper');
+    $commentWrappers[$commentWrappers.length - 2].style.border = '';
+
+    // Remove underline of the last comment
+    $commentWrappers = document.querySelectorAll('.comment-wrapper');
+    $commentWrappers[$commentWrappers.length - 1].style.border = 'none';
 
   }
 
@@ -504,6 +511,10 @@ $form.addEventListener('submit', function (event) {
     newDOMtree = renderComment(newComment);
     $commentList = document.querySelector('#comment-list');
     $commentList.appendChild(newDOMtree);
+
+    // Remove underline of the last comment
+    $commentWrappers = document.querySelectorAll('.comment-wrapper');
+    $commentWrappers[$commentWrappers.length - 1].style.border = 'none';
 
   }
 
@@ -550,6 +561,10 @@ function showCommentsForCorrectRecipe() {
         // Updata the number of comments
         var $numberOfComments = document.querySelector('.number-of-comments');
         $numberOfComments.textContent = data.conversation[i].comments.length + ' comments';
+
+        // Remove the underline of the last comment
+        var $commentWrappers = document.querySelectorAll('.comment-wrapper');
+        $commentWrappers[$commentWrappers.length - 1].style.border = 'none';
       }
     }
   }

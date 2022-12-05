@@ -60,11 +60,11 @@
 }
 
 .container-for-recipe-details {
-  margin: 40px 60px;
+  margin: 40px 9%;
 }
 
 .container-for-form {
-  margin: 60px 90px 0;
+  margin: 60px 10% 0;
 }
 
 @media screen and (max-width: 420px) {
