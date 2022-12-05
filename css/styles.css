@@ -53,14 +53,14 @@
   width: 100%;
   height: 1600px;
   object-fit: none;
-  object-position: 100% 19%;
+  object-position: 75% 19%;
   zoom: 40%;
 }
 
 .text-box-wrapper {
   position: absolute;
-  right: 163px;
-  bottom: 111px;
+  right: 10%;
+  bottom: 10%;
   width: 466px;
   height: 224px;
   background-color: white;
@@ -112,7 +112,7 @@
 
 #type-of-cuisine {
   position: absolute;
-  left: 270px;
+  left: 267px;
   top: 6px;
   width: 150px;
   border-radius: 18px;
@@ -121,6 +121,10 @@
   font-family: "Abhaya Libre", sans-serif;
   color: #878282;
   font-size: 18px;
+}
+
+#type-of-cuisine:hover {
+  cursor: pointer;
 }
 
 .recipe-wrapper {
@@ -521,7 +525,7 @@
     right: 20px;
     bottom: 20px;
     width: 231px;
-    height: 126px;
+    height: 123px;
   }
 
   .text-sharing {
