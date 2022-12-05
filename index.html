@@ -20,7 +20,7 @@
   <header>
     <nav class="navber">
       <ul class="navber-list">
-        <li class="navber-listitem"><a href="#" data-view="home" class="nav-ajax-project" name="home">AJAX Project</a></li>
+        <li class="navber-listitem"><a href="#" data-view="home" class="nav-ajax-project" name="home">Happy Cooking</a></li>
         <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-recipes" name="all-recipes">Recipes</a></li>
         <li class="navber-listitem"><a href="#" data-view="favorites" class="nav-favorites" name="favorites">Favorites</a></li>
       </ul>
@@ -28,7 +28,7 @@
   </header>
   <main>
     <!---------------- home ------------------>
-    <div data-view="home" class="view hidden">
+    <div data-view="home" class="view">
       <div class="container-for-home">
         <div class="home-img-wrapper">
           <img src="images/pexels-antoni-shkraba-5589046.jpg" alt="a picture of home view" class="img-home">
@@ -41,16 +41,43 @@
     </div>
 
     <!------------ all recipes ------------>
-    <div data-view="all-recipes" class="view hidden">
+    <div data-view="all-recipes" class="view hidden" id="all-recipes">
       <p class="text-all-recipes">All Recipes</p>
+      <form>
+        <select id="type-of-cuisine">
+          <option value="cuisine-type">Cuisine Type</option>
+          <option value="american">American</option>
+          <option value="asian">Asian</option>
+          <option value="british">British</option>
+          <option value="caribbean">Caribbean</option>
+          <option value="central-europe">Central Europe</option>
+          <option value="chinese">Chinese</option>
+          <option value="eastern-europe">Eastern Europe</option>
+          <option value="french">French</option>
+          <option value="greek">Greek</option>
+          <option value="indian">Indian</option>
+          <option value="italian">Italian</option>
+          <option value="japanese">Japanese</option>
+          <option value="korean">Korean</option>
+          <option value="kosher">Kosher</option>
+          <option value="mediterranean">Mediterranean</option>
+          <option value="mexican">Mexican</option>
+          <option value="middle-eastern">Middle Eastern</option>
+          <option value="nordic">Nordic</option>
+          <option value="south-american">South American</option>
+          <option value="south-east-asian">South East Asian</option>
+          <option value="world">World</option>
+        </select>
+      </form>
 
       <!-- レシピたちの箱 -->
       <div class="container-for-recipes">
       </div>
+      <p class="no-recipe-message"> </p>
     </div>
 
     <!------------ recipe details ------------>
-    <div data-view="recipe-details" class="view">
+    <div data-view="recipe-details" class="view hidden">
       <div class="container-for-recipe-details">
         <!-- row 1: 1st box -->
         <div class="row recipe-details-box-1">
@@ -326,19 +353,11 @@
         </div>
       </form>
       <ul id="comment-list">
-        <!-- <li class="comment-wrapper">
-          <p class="name-of-comment">Miori</p>
-          <p class="text-of-comment">It was really good!</p>
-        </li>
-        <li class="comment-wrapper">
-          <p class="name-of-comment">Kazuma</p>
-          <p class="text-of-comment">It loved it.</p>
-        </li> -->
       </ul>
     </div>
 
     <!------------ favorites list ------------>
-    <div data-view="favorites" class="view">
+    <div data-view="favorites" class="view hidden">
       <p class="text-favorites">Favorites</p>
       <p class="no-recipes-in-favirites">No recipes have been added in favorites.</p>
 
