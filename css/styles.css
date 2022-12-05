@@ -165,16 +165,21 @@
   text-align: center;
   margin-top: 11px;
   padding-bottom: 4px;
+  padding-left: 10px;
 }
 
 .timer-icon-wrapper {
   position: relative;
 }
 
+.fa-regular.fa-clock {
+  font-size: 0.9em;
+}
+
 .fa-clock {
   position: absolute;
-  left: 22px;
-  top: 19px;
+  left: 25px;
+  top: 13px;
 }
 
 .recipe-calories {
@@ -199,6 +204,10 @@
   font-weight: bold;
   text-align: center;
   margin-top: 6px;
+  width: 125px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ------------ recipe details view ----------- */
@@ -229,7 +238,8 @@
 .recipe-details-title {
   font-family: "Abril Fatface", sans-serif;
   font-size: 60px;
-  margin: 10px auto;
+  margin: 10px auto 17px;
+  text-align: center;
 }
 
 .recipe-details-img-wrapper {
@@ -580,10 +590,16 @@
     font-size: 8px;
     margin-top: 5px;
     padding-bottom: 1px;
+    padding-left: 7px;
   }
 
-  i.fa-clock {
-    display: none;
+  .fa-regular.fa-clock {
+    font-size: 0.5em;
+  }
+
+  .fa-clock {
+    left: 8px;
+    top: 4.5px;
   }
 
   .recipe-calories {
@@ -600,6 +616,7 @@
   .recipe-cousine {
     font-size: 8px;
     margin-top: 2px;
+    width: 55.5px;
   }
 
   /* ------ mobile recipe details view ----- */
@@ -627,6 +644,7 @@
 
   .recipe-details-title {
     font-size: 25px;
+    margin: 10px auto;
   }
 
   .image-for-recipe-details {

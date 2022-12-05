@@ -140,7 +140,7 @@ function renderRecipe(object) {
   $columnHalf1.appendChild($recipeTime);
 
   var $timerIcon = document.createElement('i');
-  $timerIcon.setAttribute('class', 'fa-regular fa-clock fa-sm');
+  $timerIcon.setAttribute('class', 'fa-regular fa-clock');
   $columnHalf1.appendChild($timerIcon);
 
   var $columnHalf2 = document.createElement('div');
