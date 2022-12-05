@@ -1,7 +1,7 @@
 /* --------- header -------- */
 .navber {
   height: 86px;
-  border-bottom: solid 0.5px black;
+  border-bottom: none;
   margin: 0 25px;
   display: flex;
   justify-content: right;

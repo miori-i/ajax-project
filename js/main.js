@@ -205,7 +205,7 @@ function viewSwapping(dataView) {
     $views[1].className = 'view hidden';
     $views[2].className = 'view hidden';
     $views[3].className = 'view hidden';
-    $navber.style.borderBottom = 'none';
+    $navber.style.borderBottom = '';
     // Clear the values up when user leave all recipes view.
     data.details = null;
     // Reset the star icon
