@@ -133,6 +133,7 @@
   box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.5);
   margin: 30px;
   list-style: none;
+  cursor: pointer;
 }
 
 .recipe-image-wrapper {
@@ -398,6 +399,7 @@
   padding-left: 15px;
   font-family: "Abhaya Libre", sans-serif;
   font-size: 17px;
+  cursor: pointer;
 }
 
 .input-comment {
@@ -409,6 +411,7 @@
   padding-left: 15px;
   font-family: "Abhaya Libre", sans-serif;
   font-size: 17px;
+  cursor: pointer;
 }
 
 .input-name:focus,
