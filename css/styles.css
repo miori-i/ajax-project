@@ -79,7 +79,7 @@
   font-family: "Abhaya Libre", sans-serif;
   font-size: 22px;
   border: none;
-  width: 167px;
+  width: 300px;
   height: 40px;
   position: absolute;
   bottom: 30px;
@@ -498,9 +498,9 @@
   }
 
   .nav-ajax-project {
-    font-size: 23px;
-    left: 8px;
-    top: 11px;
+    font-size: 21px;
+    left: 4px;
+    top: 15px;
   }
 
   .navber-list {
@@ -535,10 +535,10 @@
   }
 
   .see-recipes-button {
-    font-size: 16px;
+    font-size: 12px;
     bottom: 19px;
     left: 22px;
-    width: 130px;
+    width: 162px;
     height: 26px;
   }
 
