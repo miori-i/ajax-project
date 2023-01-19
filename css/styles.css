@@ -79,7 +79,7 @@
   font-family: "Abhaya Libre", sans-serif;
   font-size: 22px;
   border: none;
-  width: 300px;
+  width: 305px;
   height: 40px;
   position: absolute;
   bottom: 30px;
@@ -133,7 +133,6 @@
   box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.5);
   margin: 30px;
   list-style: none;
-  cursor: pointer;
 }
 
 .recipe-image-wrapper {
@@ -399,7 +398,6 @@
   padding-left: 15px;
   font-family: "Abhaya Libre", sans-serif;
   font-size: 17px;
-  cursor: pointer;
 }
 
 .input-comment {
@@ -411,7 +409,6 @@
   padding-left: 15px;
   font-family: "Abhaya Libre", sans-serif;
   font-size: 17px;
-  cursor: pointer;
 }
 
 .input-name:focus,
@@ -485,7 +482,7 @@
 /* ----- media query -----  */
 
 /* mobile screen */
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 767px) {
   /* --------- mobile header -------- */
   .navber {
     height: 53px;
@@ -501,13 +498,13 @@
   }
 
   .nav-ajax-project {
-    font-size: 21px;
-    left: 4px;
-    top: 15px;
+    font-size: 20px;
+    left: 5px;
+    top: 16px;
   }
 
   .navber-list {
-    margin-bottom: 14px;
+    margin-bottom: 11px;
   }
 
   .nav-recipes,
@@ -541,7 +538,7 @@
     font-size: 12px;
     bottom: 19px;
     left: 22px;
-    width: 162px;
+    width: 170px;
     height: 26px;
   }
 
@@ -829,5 +826,18 @@
   .no-recipes-in-favirites {
     font-size: 15px;
     padding-top: 30px;
+  }
+}
+
+/* tablet screen */
+@media screen and (max-width: 1279px) {
+  /* ------- tablet navbar -------- */
+  .nav-ajax-project {
+    top: 22px;
+  }
+
+  /* ------- tablet home view -------- */
+  .img-home {
+    object-position: 60% 13%;
   }
 }
