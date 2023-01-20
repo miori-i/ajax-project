@@ -5,6 +5,7 @@ var xhrLunch = new XMLHttpRequest();
 xhrLunch.open('GET', 'https://api.edamam.com/api/recipes/v2?type=public&app_id=976754e0&app_key=591921aed583d2650315dfbe121daa37&mealType=Lunch&random=true');
 xhrLunch.setRequestHeader('token', 'abc123');
 xhrLunch.responseType = 'json';
+xhrLunch.addEventListener('error', loadingFailed);
 xhrLunch.addEventListener('load', function () {
   for (var i = 0; i < xhrLunch.response.hits.length; i++) {
     allRecipes.push(xhrLunch.response.hits[i]);
@@ -47,38 +48,47 @@ xhrLunch.addEventListener('load', function () {
         xhrDinner.open('GET', 'https://api.edamam.com/api/recipes/v2?type=public&app_id=976754e0&app_key=591921aed583d2650315dfbe121daa37&mealType=Dinner&random=true');
         xhrDinner.setRequestHeader('token', 'abc123');
         xhrDinner.responseType = 'json';
+        xhrDinner.addEventListener('error', loadingFailed);
         xhrDinner.addEventListener('load', function () {
+
+          // Hide the loading spinner
+          var $loadingSpinner = document.querySelector('.spinner-wrapper');
+          $loadingSpinner.className = 'spinner-wrapper hidden';
 
           for (var i = 0; i < xhrDinner.response.hits.length; i++) {
             allRecipes.push(xhrDinner.response.hits[i]);
           }
 
-          // Use a loop to create a DOM tree for each recipe in the data model and append it to the page
-          for (var k = 0; k < allRecipes.length; k++) {
-            var $containerForRecipes = document.querySelector('.container-for-recipes');
-            $containerForRecipes.appendChild(renderRecipe(allRecipes[k]));
-          }
+          // Show no results message for the resulting data was empty or not found
+          if (allRecipes.length === 0) {
+            var $noResultsMessage = document.querySelector('.no-results-message');
+            $noResultsMessage.className = 'no-results-message';
 
-          // Listen for clicks on the parent element of all rendered recipes in all recipes view
-          $containerForRecipes.addEventListener('click', viewRecipeDetails);
-
-          function viewRecipeDetails(event) {
-            if (event.target.getAttribute('class') === 'recipe-image' || event.target.getAttribute('class') === 'recipe-time' || event.target.getAttribute('class') === 'recipe-calories' || event.target.getAttribute('class') === 'recipe-cousine' || event.target.getAttribute('class') === 'recipe-wrapper' || event.target.getAttribute('class') === 'column-half timer-icon-wrapper' || event.target.getAttribute('class') === 'recipe-number-of-ingredients' || event.target.getAttribute('class') === 'recipe-name' || event.target.getAttribute('class') === 'fa-regular fa-clock fa-sm') {
-              var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
-              for (var i = 0; i < allRecipes.length; i++) {
-                if (allRecipes[i].recipe.label === recipeLabel) {
-                  data.details = allRecipes[i];
-                }
-              }
-              viewSwapping('recipe-details');
-              enterValuesForRecipeDetails(data.details);
+          } else {
+            // Use a loop to create a DOM tree for each recipe in the data model and append it to the page
+            for (var k = 0; k < allRecipes.length; k++) {
+              var $containerForRecipes = document.querySelector('.container-for-recipes');
+              $containerForRecipes.appendChild(renderRecipe(allRecipes[k]));
             }
+
+            // Listen for clicks on the parent element of all rendered recipes in all recipes view
+            $containerForRecipes.addEventListener('click', function (event) {
+              if (event.target.getAttribute('class') === 'recipe-image' || event.target.getAttribute('class') === 'recipe-time' || event.target.getAttribute('class') === 'recipe-calories' || event.target.getAttribute('class') === 'recipe-cousine' || event.target.getAttribute('class') === 'recipe-wrapper' || event.target.getAttribute('class') === 'column-half timer-icon-wrapper' || event.target.getAttribute('class') === 'recipe-number-of-ingredients' || event.target.getAttribute('class') === 'recipe-name' || event.target.getAttribute('class') === 'fa-regular fa-clock fa-sm') {
+                var recipeLabel = event.target.closest('li').getAttribute('recipe-label');
+                for (var i = 0; i < allRecipes.length; i++) {
+                  if (allRecipes[i].recipe.label === recipeLabel) {
+                    data.details = allRecipes[i];
+                  }
+                }
+                viewSwapping('recipe-details');
+                enterValuesForRecipeDetails(data.details);
+              }
+            });
+
+            // Listen for "change" events on the drop - down boxes
+            var $selectTypeOfCuisine = document.getElementById('type-of-cuisine');
+            $selectTypeOfCuisine.addEventListener('change', filterTypeOfCuisine);
           }
-
-          // Listen for "change" events on the drop - down boxes
-          var $selectTypeOfCuisine = document.getElementById('type-of-cuisine');
-          $selectTypeOfCuisine.addEventListener('change', filterTypeOfCuisine);
-
         });
 
         xhrDinner.send();
@@ -90,6 +100,26 @@ xhrLunch.addEventListener('load', function () {
   xhrBreakfast.send();
 });
 xhrLunch.send();
+
+function loadingFailed(res) {
+  // Hide the loading spinner
+  var $loadingSpinner = document.querySelector('.spinner-wrapper');
+  $loadingSpinner.className = 'spinner-wrapper hidden';
+
+  // console.log(res);
+
+  // Show the limit error message
+  if (res.currentTarget.status === 0) {
+    var $limitError = document.querySelector('.limit-error-message.hidden');
+    $limitError.className = 'limit-error-message';
+  }
+
+  // Show the network error message
+  if (res.currentTarget.status === 404 || res.currentTarget.status === 400) {
+    var $networkError = document.querySelector('.network-error-message.hidden');
+    $networkError.className = 'network-error-message';
+  }
+}
 
 function renderRecipe(object) {
   var $recipeWrapper = document.createElement('li');
