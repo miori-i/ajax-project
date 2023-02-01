@@ -80,6 +80,7 @@
 
 .see-recipes-button {
   background-color: #fedede;
+  color: #474444;
   font-family: "Abhaya Libre", sans-serif;
   font-size: 22px;
   border: none;
@@ -225,6 +226,7 @@
   border: 1px solid black;
   text-align: center;
   padding: 0 80px;
+  flex-wrap: nowrap;
 }
 
 .recipe-details-time,
@@ -242,6 +244,9 @@
   font-family: "Abhaya Libre", sans-serif;
   font-size: 20px;
   margin: 6px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .recipe-details-title {
@@ -437,6 +442,7 @@
   letter-spacing: 1px;
   color: white;
   background-color: #e29696;
+  text-align: center;
 }
 
 .post-button:hover {
@@ -666,16 +672,17 @@
 
   .text-sharing {
     font-size: 22px;
-    margin: 15px 22px 10px;
-    letter-spacing: 0.6px;
+    margin: 12px 22px;
+    letter-spacing: 0.5px;
   }
 
   .see-recipes-button {
     font-size: 12px;
-    bottom: 19px;
+    bottom: 18px;
     left: 22px;
     width: 170px;
     height: 26px;
+    font-weight: bold;
   }
 
   /* ----- mobile all recipes view ----- */
@@ -926,8 +933,8 @@
   }
 
   .post-button {
-    width: 60px;
-    height: 23px;
+    width: 65px;
+    height: 26px;
     border-radius: 4px;
     font-size: 16px;
     letter-spacing: 1px;
@@ -967,7 +974,7 @@
   /* ------------ tablet loading spinner and network error message ------------ */
 
   .spinner-wrapper {
-    margin: 60px auto;
+    margin: 80px auto;
     width: 300px;
   }
 
