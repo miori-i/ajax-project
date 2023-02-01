@@ -48,7 +48,6 @@ xhrLunch.addEventListener('load', function () {
         xhrDinner.open('GET', 'https://api.edamam.com/api/recipes/v2?type=public&app_id=976754e0&app_key=591921aed583d2650315dfbe121daa37&mealType=Dinner&random=true');
         xhrDinner.setRequestHeader('token', 'abc123');
         xhrDinner.responseType = 'json';
-        xhrDinner.addEventListener('error', loadingFailed);
         xhrDinner.addEventListener('load', function () {
 
           // Hide the loading spinner
@@ -106,16 +105,8 @@ function loadingFailed(res) {
   var $loadingSpinner = document.querySelector('.spinner-wrapper');
   $loadingSpinner.className = 'spinner-wrapper hidden';
 
-  // console.log(res);
-
-  // Show the limit error message
+  // Show the network error(includes a limit error) message
   if (res.currentTarget.status === 0) {
-    var $limitError = document.querySelector('.limit-error-message.hidden');
-    $limitError.className = 'limit-error-message';
-  }
-
-  // Show the network error message
-  if (res.currentTarget.status === 404 || res.currentTarget.status === 400) {
     var $networkError = document.querySelector('.network-error-message.hidden');
     $networkError.className = 'network-error-message';
   }
