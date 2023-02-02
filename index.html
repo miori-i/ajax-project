@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
+  <title>Cooking the World</title>
   <link rel="icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -20,7 +20,7 @@
   <header>
     <nav class="navber">
       <ul class="navber-list">
-        <li class="navber-listitem"><a href="#" data-view="home" class="nav-ajax-project" name="home">Happy Cooking</a></li>
+        <li class="navber-listitem"><a href="#" data-view="home" class="nav-ajax-project" name="home">Cooking the World</a></li>
         <li class="navber-listitem"><a href="#" data-view="all-recipes" class="nav-recipes" name="all-recipes">Recipes</a></li>
         <li class="navber-listitem"><a href="#" data-view="favorites" class="nav-favorites" name="favorites">Favorites</a></li>
       </ul>
@@ -35,7 +35,7 @@
         </div>
         <div class="text-box-wrapper">
           <p class="text-sharing">Sharing my love for food</p>
-          <button type="button" class="see-recipes-button">See recipes →</button>
+          <button type="button" class="see-recipes-button">See international recipes →</button>
         </div>
       </div>
     </div>
@@ -70,7 +70,25 @@
         </select>
       </form>
 
-      <!-- レシピたちの箱 -->
+      <!-- loading spinner -->
+      <div class="spinner-wrapper">
+        <div class="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <p class="loading-message">Loading...</p>
+      </div>
+      <!-- error messages -->
+      <p class="no-results-message hidden">No Results. Try Searching Again.</p>
+      <p class="network-error-message hidden">Sorry, there was an error connecting to the network!</br>Please try again after some time.</p>
+
+      <!-- container for recipes -->
       <div class="container-for-recipes">
       </div>
       <p class="no-recipe-message"> </p>
@@ -341,10 +359,10 @@
           </div>
           <div class="row">
             <div class="column-two-ten">
-              <input type="text" name="name" class="input-name" placeholder="Name" >
+              <input required type="text" name="name" class="input-name" placeholder="Name" >
             </div>
             <div class="column-seven-ten">
-              <textarea name="comment" class="input-comment" placeholder="What do you think?"></textarea>
+              <textarea required name="comment" class="input-comment" placeholder="What do you think?"></textarea>
             </div>
             <div class="column-one-ten post-button-wrapper">
               <button class="post-button">Post</button>
@@ -361,7 +379,7 @@
       <p class="text-favorites">Favorites</p>
       <p class="no-recipes-in-favirites">No recipes have been added in favorites.</p>
 
-      <!-- お気に入りレシピたちの箱 -->
+      <!------- container for the recipes added to the favorite list ------->
       <div class="container-for-favorites">
       </div>
     </div>

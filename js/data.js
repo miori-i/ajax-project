@@ -1,7 +1,7 @@
 /* exported data */
 
 var data = {
-  view: 'entry-form',
+  view: 'home',
   details: null,
   favorites: [],
   conversation: []
