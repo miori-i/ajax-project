@@ -281,7 +281,7 @@ function viewSwapping(dataView) {
 document.addEventListener('DOMContentLoaded', function () {
   showCommentsForCorrectRecipe();
 
-  // refreshing the pages shows the same view as before refreshing
+  // Refreshing the pages shows the same view as before refreshing
   viewSwapping(data.view);
   enterValuesForRecipeDetails(data.details);
 });
@@ -593,8 +593,7 @@ function showCommentsForCorrectRecipe() {
 
 // Filter recipes by cuisine type and show them by using a loop to create a DOM tree for each recipe in the data model and append it to the page
 function filterTypeOfCuisine(event) {
-  // value = selected type pf cuisine
-  var value = event.currentTarget.value;
+  var value = event.currentTarget.value; // selected type pf cuisine
 
   // Clear domtree up
   var $containerForRecipes = document.querySelector('.container-for-recipes');
@@ -974,5 +973,4 @@ function filterTypeOfCuisine(event) {
       $noRecipeMessage.textContent = ' ';
     }
   }
-
 }
