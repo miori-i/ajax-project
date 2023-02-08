@@ -37,11 +37,4 @@ Try the application live at https://mioriimai.github.io/cooking-the-world/
 ### Getting Started
 
 1. Clone the repository.
-
-2. Create the following files:
-   * index.html
-   * styles.css
-   * data.js
-   * main.js
-
-3. Open index.html with LiveReload Server.
+2. Open index.html with LiveReload Server.
